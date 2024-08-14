@@ -1,4 +1,4 @@
-- 👋 Hi, I’m @Lakyar
+- 👋 Hi, I’m Lak Yar
 - 👀 I’m interested in fullstack web development
 - 📫 How to reach me ... Telegram - @lakyarlinn
 
