@@ -1,8 +1,22 @@
-- 👋 Hi, I’m Lak Yar
-- 👀 I’m interested in fullstack web development
-- 📫 How to reach me ... Telegram - @lakyarlinn
+Hi, I'm Lak Yar 👋
 
-<!---
-Lakyar/Lakyar is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->
+20y/o Junior Developer | Based in Yangon
+
+🛠️ Skills & Experience
+Education: Completed NCC Level 5 Diploma in Computing from MST College.
+Freelance Projects: Actively working on various freelance projects since early 2024.
+Front-End Development: Proficient in UI/UX design, HTML, CSS, JavaScript, and Tailwind CSS.
+Back-End & Database: Solid understanding of database management; currently advancing my skills in PHP and Laravel.
+Learning: Continuously improving in ReactJS to expand my full-stack capabilities.
+Problem-Solving: Strong analytical skills with a focus on system analysis and critical thinking.
+
+🌱 Goals
+Full-Stack Proficiency: Aiming to master full-stack web development to take on more comprehensive projects.
+Networking: Actively expanding my professional network to collaborate and grow in the tech industry.
+
+🌐 Communication
+English: Fair proficiency with strong communication skills; always improving.
+
+📫 Reach me - Telegram >> @lakyarlinn
+
+
