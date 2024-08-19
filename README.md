@@ -4,6 +4,7 @@ Hi, I'm Lak Yar 👋
 
 🛠️ Skills & Experience
 Education: Completed NCC Level 5 Diploma in Computing from MST College.
+jhg
 Freelance Projects: Actively working on various freelance projects since early 2024.
 Front-End Development: Proficient in UI/UX design, HTML, CSS, JavaScript, and Tailwind CSS.
 Back-End & Database: Solid understanding of database management; currently advancing my skills in PHP and Laravel.
