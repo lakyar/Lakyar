@@ -6,8 +6,6 @@
 
 - 🌱 I’m currently learning **Web and mobile development**
 
-- 🔭 I’m currently working on **Ani: New Stage**
-
 - 💬 Ask me about **Frontend development and system designs**
 
 - 📫 How to reach me **https://t.me/lakyarlinn** | **lakyarlinn@gmail.com**
