@@ -6,6 +6,8 @@
 
 - 🌱 I’m currently learning **Web and mobile development**
 
+- 🌐 Website **https://lakyar.com**
+
 - 💬 Ask me about **Frontend development and system designs**
 
 - 📫 How to reach me **https://t.me/lakyarlinn** | **lakyarlinn@gmail.com**
