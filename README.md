@@ -6,7 +6,7 @@
 
 - 🌱 I’m currently learning **Web and mobile development**
  
-- 🔭 I’m currently working at **[DigitLab](https://digitlab.cc)**
+- 🔭 I’m currently working at **[DigitLab - Digital Studio](https://digitlab.cc)**
 
 - 🌐 Website **https://lakyar.com**
 
