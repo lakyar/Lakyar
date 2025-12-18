@@ -14,7 +14,6 @@
 
 - 📫 How to reach me **https://t.me/lakyarlinn** | **lakyarlinn@gmail.com**
 
-- ⚡ Fun fact **I can't parallel park**
 
 
 <h3 align="left">Languages and Tools:</h3>
