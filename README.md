@@ -10,7 +10,7 @@
 
 - 🌐 Website **https://lakyar.com**
 
-- 💬 Ask me about **Frontend development and system designs**
+- 💬 Ask me about **Frontend development and business design systems**
 
 - 📫 How to reach me **https://t.me/lakyarlinn** | **lakyarlinn@gmail.com**
 
