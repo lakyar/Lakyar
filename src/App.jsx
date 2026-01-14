@@ -22,8 +22,8 @@ const App = () => {
         <main className="grow">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/blogs" element={<BlogList />} />
             <Route path="/project/:slug" element={<Project />} />
+            <Route path="/blogs" element={<BlogList />} />
             <Route path="/blog/:slug" element={<Blog />} />
 
           </Routes>
