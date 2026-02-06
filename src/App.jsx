@@ -1,38 +1,32 @@
-import React from 'react'
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Navbar from './components/Navbar'
-import Home from './pages/Home'
-import Project from './pages/Project'
-import Blog from './pages/Blog'
-import Footer from './components/Footer'
-import BlogList from './pages/BlogList';
-
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import Project from "./pages/Project";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
     <Router>
       {/* Background image */}
-      <div className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat opacity-20 dark:opacity-15" ></div>
+      <div className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat opacity-20 dark:opacity-15"></div>
 
       {/* Main layout */}
-      <div className="min-h-screen flex flex-col backdrop-blur-none">
+      <div className="flex min-h-screen flex-col backdrop-blur-none">
         <Navbar />
 
         <main className="grow">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/project/:slug" element={<Project />} />
-            <Route path="/blogs" element={<BlogList />} />
-            <Route path="/blog/:slug" element={<Blog />} />
-
           </Routes>
         </main>
 
         <Footer />
       </div>
     </Router>
-  )
-}
+  );
+};
 
-export default App
+export default App;

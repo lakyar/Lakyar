@@ -9,111 +9,91 @@ function ThemeToggle() {
       : "light";
   });
 
-  const [isAnimating, setIsAnimating] = useState(false);
+  const [isHover, setIsHover] = useState(false);
 
   useEffect(() => {
     const root = window.document.documentElement;
-    if (theme === "dark") {
-      root.classList.add("dark");
-    } else {
-      root.classList.remove("dark");
-    }
+    root.classList.toggle("dark", theme === "dark");
     localStorage.setItem("theme", theme);
   }, [theme]);
 
   const toggle = () => {
-    setIsAnimating(true);
-    setTheme(prev => (prev === "dark" ? "light" : "dark"));
-    setTimeout(() => setIsAnimating(false), 600);
+    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
   };
 
   return (
     <div className="flex items-center justify-center">
       <button
         onClick={toggle}
-        className={`
-          relative w-20 h-10 rounded-full transition-all ease-in-out
-          bg-gradient-to-r from-blue-400 to-purple-300
-          dark:from-gray-700 dark:to-gray-900
-          shadow-md cursor-pointer
-          transform scale-[0.6] hover:scale-[0.65] md:scale-[0.7] md:hover:scale-[0.8]
-          
-          ${isAnimating ? 'scale-110' : ''}
-        `}
-        aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+        onMouseEnter={() => setIsHover(true)}
+        onMouseLeave={() => setIsHover(false)}
+        className="group relative"
+        aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
       >
-        {/* Track */}
-        <div className="absolute inset-0 rounded-full overflow-hidden">
-          {/* Sun/Moon Background Effects */}
-          <div className={`
-            absolute inset-0 bg-yellow-200 transition-all rounded-full
-            ${theme === 'dark' ? 'opacity-0 scale-0' : 'opacity-100 scale-100'}
-          `} />
-          <div className={`
-            absolute inset-0 bg-blue-900 transition-all rounded-full
-            ${theme === 'dark' ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}
-          `} />
-        </div>
+        {/* Main container - sleek pill shape */}
+        <div
+          className={`relative h-8 w-16 overflow-hidden rounded-full border border-slate-300/50 bg-gradient-to-r from-slate-200 to-slate-300 shadow-sm transition-all duration-500 ease-out dark:border-slate-700/50 dark:from-slate-800 dark:to-slate-900 ${isHover ? "scale-105" : "scale-100"} `}
+        >
+          {/* Animated gradient overlay */}
+          <div
+            className={`absolute inset-0 rounded-full transition-opacity duration-700 ${
+              theme === "dark"
+                ? "bg-gradient-to-r from-blue-500/20 to-purple-500/20 opacity-100"
+                : "bg-gradient-to-r from-amber-300/30 to-orange-400/30 opacity-100"
+            } `}
+          />
 
-        {/* Stars for Dark Mode */}
-        <div className={`
-          absolute inset-0 transition-opacity
-          ${theme === 'dark' ? 'opacity-100' : 'opacity-0'}
-        `}>
-          <div className="absolute top-2 left-4 w-1 h-1 bg-white rounded-full animate-pulse" />
-          <div className="absolute top-4 left-6 w-0.5 h-0.5 bg-white rounded-full animate-pulse delay-100" />
-          <div className="absolute top-1 left-8 w-0.5 h-0.5 bg-white rounded-full animate-pulse delay-200" />
-        </div>
+          {/* Sun & Moon Icons positioned absolutely */}
+          <div className="absolute inset-0 flex items-center justify-between px-2">
+            {/* Sun Icon - Fixed position */}
+            <div
+              className={`h-4 w-4 transition-all duration-700 ease-out ${
+                theme === "dark"
+                  ? "scale-75 opacity-40"
+                  : "scale-100 opacity-100"
+              } `}
+            >
+              <div className="h-full w-full rounded-full bg-amber-500" />
+            </div>
 
-        {/* Toggle Handle */}
-        <div className={`
-          absolute top-1 left-1 w-8 h-8 rounded-full
-          transition-all ease-in-out
-          transform-gpu
-          ${theme === 'dark' 
-            ? 'translate-x-10 bg-gray-300' 
-            : 'translate-x-0 bg-yellow-400'
-          }
-          ${isAnimating ? theme === 'dark' ? 'rotate-180' : 'rotate-0' : ''}
-          shadow-lg
-          flex items-center justify-center
-        `}>
-          {/* Sun/Moon Icons */}
-          <div className="relative w-4 h-4">
-            {/* Sun Rays */}
-            <div className={`
-              absolute inset-0 transition-opacity
-              ${theme === 'dark' ? 'opacity-0' : 'opacity-100'}
-            `}>
-              <div className="absolute top-0 left-1/2 w-0.5 h-1.5 bg-yellow-600 transform -translate-x-1/2 -translate-y-1" />
-              <div className="absolute right-0 top-1/2 w-1.5 h-0.5 bg-yellow-600 transform translate-x-1 -translate-y-1/2" />
-              <div className="absolute bottom-0 left-1/2 w-0.5 h-1.5 bg-yellow-600 transform -translate-x-1/2 translate-y-1" />
-              <div className="absolute left-0 top-1/2 w-1.5 h-0.5 bg-yellow-600 transform -translate-x-1 -translate-y-1/2" />
+            {/* Moon Icon - Fixed position */}
+            <div
+              className={`h-4 w-4 transition-all duration-700 ease-out ${
+                theme === "dark"
+                  ? "scale-100 opacity-100"
+                  : "scale-75 opacity-40"
+              } `}
+            >
+              <div className="h-full w-full rounded-full bg-slate-400" />
             </div>
-            
-            {/* Moon Craters */}
-            <div className={`
-              absolute inset-0 transition-opacity
-              ${theme === 'dark' ? 'opacity-100' : 'opacity-0'}
-            `}>
-              <div className="absolute top-1 left-1 w-1 h-1 bg-gray-400 rounded-full" />
-              <div className="absolute bottom-1 right-1 w-0.5 h-0.5 bg-gray-400 rounded-full" />
-            </div>
+          </div>
+
+          {/* Sliding Circle - Simple and clean */}
+          <div
+            className={`absolute top-1 h-6 w-6 rounded-full shadow-md transition-all duration-700 ease-out ${
+              theme === "dark"
+                ? "left-8 bg-gradient-to-br from-slate-300 to-slate-100"
+                : "left-1 bg-gradient-to-br from-amber-300 to-orange-400"
+            } flex items-center justify-center`}
+          >
+            {/* Inner dot */}
+            <div
+              className={`h-1.5 w-1.5 rounded-full transition-all duration-500 ${
+                theme === "dark" ? "bg-slate-500" : "bg-amber-600"
+              } `}
+            />
           </div>
         </div>
 
-        {/* Cloud for Light Mode */}
-        <div className={`
-          absolute top-2 right-3 transition-all duration-500
-          ${theme === 'dark' ? 'opacity-0 scale-0' : 'opacity-100 scale-100'}
-        `}>
-          <div className="w-3 h-2 bg-white rounded-full relative">
-            <div className="absolute -top-1 left-1 w-2 h-2 bg-white rounded-full" />
-            <div className="absolute -top-1 right-1 w-2 h-2 bg-white rounded-full" />
-          </div>
-        </div>
+        {/* Hover effect lines */}
+        <div
+          className={`absolute -inset-2 rounded-full transition-all duration-300 ${
+            isHover
+              ? "border-2 border-slate-300/30 dark:border-slate-600/30"
+              : "border-0"
+          } pointer-events-none`}
+        />
       </button>
-
     </div>
   );
 }

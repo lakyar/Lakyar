@@ -1,8 +1,10 @@
 import React from "react";
+import Hero from "../sections/Hero";
 
 const Home = () => {
   return (
     <section id="home" className="mx-6 sm:mx-[5%] md:mx-[10%]">
+      <Hero />
       <p className="my-10 rounded-md bg-linear-to-b from-pink-500/15 to-blue-500/15 p-4 md:p-8 lg:text-lg">
         This website serves as my personal portfolio, showcasing my background,
         experience, and the projects I have developed throughout my journey as a
