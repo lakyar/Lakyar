@@ -126,7 +126,7 @@ const Navbar = () => {
           scrolled
             ? "scale-95 border shadow-lg backdrop-blur-sm md:shadow-xl"
             : ""
-        } border-white/20 dark:border-slate-700/50`}
+        } border-white/20 dark:border-neutral-700/50`}
       >
         {/* Navigation Links */}
         <div className="flex items-center gap-1 gap-x-3 rounded-full">
@@ -137,8 +137,8 @@ const Navbar = () => {
               onClick={(e) => handleClick(e, link.id, link.href)}
               className={`group relative flex size-10 items-center justify-center rounded-full transition-all duration-300 active:scale-75 ${
                 activeLink === link.id
-                  ? "scale-110 text-white"
-                  : "text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
+                  ? "scale-110"
+                  : "text-neutral-800 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white"
               } `}
               aria-label={link.label}
               title={link.label}
@@ -161,7 +161,7 @@ const Navbar = () => {
 
               {/* Tooltip */}
               <span
-                className={`absolute -bottom-8 left-1/2 -translate-x-1/2 rounded-md bg-slate-900 px-2 py-1 text-xs whitespace-nowrap text-white opacity-0 shadow-lg transition-all duration-300 group-hover:opacity-100 dark:bg-white dark:text-slate-900 ${activeLink === link.id ? "hidden" : ""} `}
+                className={`absolute -bottom-8 left-1/2 -translate-x-1/2 rounded-md bg-neutral-900 px-2 py-1 text-xs whitespace-nowrap text-white opacity-0 shadow-lg transition-all duration-300 group-hover:opacity-100 dark:bg-white dark:text-neutral-900 ${activeLink === link.id ? "hidden" : ""} `}
               >
                 {link.label}
               </span>

@@ -5,12 +5,14 @@ const Hero = () => {
     projects: 0,
     years: 0,
     satisfaction: 0,
+    coffeeCups: 9999,
   });
 
   const targetCounts = {
     projects: 20,
     years: 3,
     satisfaction: 100,
+    coffeeCups: 9999,
   };
 
   const duration = 1500;
@@ -59,6 +61,9 @@ const Hero = () => {
     increment(targetCounts.satisfaction, counts.satisfaction, (val) =>
       setCounts((prev) => ({ ...prev, satisfaction: val })),
     );
+    increment(targetCounts.coffeeCups, counts.coffeeCups, (val) =>
+      setCounts((prev) => ({ ...prev, coffeeCups: val })),
+    );
   };
 
   const scrollToProjects = (e) => {
@@ -100,7 +105,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen items-center justify-center overflow-hidden pt-20"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden pt-10"
     >
       {/* Floating Orbs */}
       <div className="absolute top-1/4 left-1/4 h-64 w-64 rounded-full bg-linear-to-r from-orange-500/10 to-orange-400/10 blur-3xl" />
@@ -109,7 +114,7 @@ const Hero = () => {
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           {/* Availability Badge */}
-          <div className="font-SG mb-8 inline-flex items-center gap-2 rounded-full bg-emerald-50 px-4 py-1 text-xs text-emerald-700 md:text-sm dark:bg-emerald-900/30 dark:text-emerald-300">
+          <div className="font-SG mb-2 inline-flex scale-90 items-center gap-2 rounded-full bg-emerald-50 px-4 py-1 text-xs text-emerald-700 sm:scale-100 md:mb-6 md:text-sm dark:bg-emerald-900/30 dark:text-emerald-300">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
@@ -118,12 +123,12 @@ const Hero = () => {
           </div>
 
           {/* Main Headline */}
-          <h1 className="font-heading mx-auto text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl md:text-5xl lg:text-6xl dark:text-white">
+          <h1 className="font-heading mx-auto text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl md:text-5xl lg:text-6xl dark:text-white">
             Invictus Lakyar
           </h1>
 
           {/* Subheading */}
-          <p className="mx-auto mt-8 max-w-xl text-slate-600 sm:text-base md:text-lg xl:max-w-3xl xl:text-xl dark:text-slate-300">
+          <p className="mx-auto mt-4 max-w-xl tracking-tight sm:text-base sm:tracking-normal md:mt-6 md:text-lg xl:max-w-3xl xl:text-xl dark:text-neutral-300">
             Freelance, passionate web developer focused on building modern,
             high-performance applications with{" "}
             <span className="font-semibold text-[#50a5b8] dark:text-[#77c1d2]">
@@ -135,7 +140,7 @@ const Hero = () => {
             </span>
             ,{" "}
             <span className="font-semibold text-[#0092c7] dark:text-[#00bcff]">
-              Tailwind CSS
+              Tailwind
             </span>
             , and{" "}
             <span className="text-primary dark:text-primary-dark font-semibold">
@@ -145,15 +150,15 @@ const Hero = () => {
           </p>
 
           {/* CTA Buttons */}
-          <div className="mt-12 flex flex-col items-center justify-around gap-4 sm:flex-row">
+          <div className="md:mt10 mt-6 flex flex-col items-center justify-around gap-4 sm:flex-row">
             <button
               onClick={scrollToProjects}
-              className="group orange-gradient hover:shadow-primary/25 relative flex w-[80%] cursor-pointer items-center justify-center overflow-hidden rounded-full px-4 py-2 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:shadow-xl active:scale-95 md:w-1/2 md:px-8 md:py-3 xl:w-1/3"
+              className="group orange-gradient hover:shadow-primary/25 relative flex w-[80%] cursor-pointer items-center justify-center overflow-hidden rounded-full px-4 py-2 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:shadow-xl active:scale-95 md:w-1/2 md:px-8 md:py-3 md:text-lg xl:w-1/3"
             >
-              <span className="relative z-10 flex items-center gap-3">
+              <span className="relative z-10 flex items-center gap-2 group-hover:tracking-widest">
                 View My Work
                 <svg
-                  className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
+                  className="group-hover:tranneutral-x-1 h-5 w-5 transition-transform duration-300"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -171,12 +176,12 @@ const Hero = () => {
 
             <button
               onClick={scrollToContact}
-              className="group hover:border-primary hover:text-primary flex w-[80%] cursor-pointer items-center justify-center rounded-full border-2 border-slate-300 bg-white/50 px-4 py-2 text-lg font-semibold backdrop-blur-sm transition-all duration-300 active:scale-95 md:w-1/2 md:px-8 md:py-3 xl:w-1/3 dark:border-slate-700 dark:bg-gray-900/50 dark:text-white dark:hover:border-orange-400"
+              className="group hover:border-primary hover:text-primary border-primary dark:hover:text-primary-dark dark:border-primary-dark hover:text-primary flex w-[80%] cursor-pointer items-center justify-center rounded-full border bg-white/50 px-4 py-2 text-base font-semibold text-black transition-all duration-300 active:scale-95 md:w-1/2 md:px-8 md:py-3 md:text-lg xl:w-1/3 dark:bg-gray-900/50 dark:text-white dark:hover:border-orange-400"
             >
-              <span className="flex items-center gap-3">
+              <span className="flex items-center gap-2 group-hover:tracking-widest">
                 Get In Touch
                 <svg
-                  className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
+                  className="group-hover:tranneutral-x-1 group-hover:text-primary dark:group-hover:text-primary-dark h-5 w-5 text-black dark:text-white"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -195,7 +200,7 @@ const Hero = () => {
           {/* Stats - with counting animation */}
           <div
             id="stats-section"
-            className="mt-20 grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-4"
+            className="mt-12 grid grid-cols-2 gap-4 md:mt-16 md:grid-cols-4 md:gap-6 xl:mt-20 xl:gap-8"
           >
             {[
               {
@@ -214,15 +219,16 @@ const Hero = () => {
                 suffix: "%",
               },
               {
-                value: "∞",
+                value: `${counts.coffeeCups}+`,
                 label: "Cups of Coffee",
+                suffix: "+",
               },
             ].map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="text-3xl font-bold text-slate-900 dark:text-white">
+                <div className="text-2xl font-bold text-neutral-900 md:text-3xl dark:text-white">
                   {stat.value}
                 </div>
-                <div className="mt-2 text-sm text-slate-600 dark:text-slate-400">
+                <div className="leading-widest font-SG mt-2 text-xs tracking-tight text-neutral-600 sm:text-sm dark:text-neutral-400">
                   {stat.label}
                 </div>
               </div>
