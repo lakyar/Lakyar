@@ -161,7 +161,7 @@ const Navbar = () => {
 
               {/* Tooltip */}
               <span
-                className={`absolute -bottom-8 left-1/2 -translate-x-1/2 rounded-md bg-neutral-900 px-2 py-1 text-xs whitespace-nowrap text-white opacity-0 shadow-lg transition-all duration-300 group-hover:opacity-100 dark:bg-white dark:text-neutral-900 ${activeLink === link.id ? "hidden" : ""} `}
+                className={`disabled: absolute -top-4 left-1/2 -translate-x-1/2 rounded-md bg-neutral-900 px-2 py-0 text-xs whitespace-nowrap text-white opacity-0 shadow-lg transition-all duration-300 group-hover:opacity-100 dark:bg-white dark:text-neutral-900 ${activeLink === link.id ? "hidden" : ""} `}
               >
                 {link.label}
               </span>

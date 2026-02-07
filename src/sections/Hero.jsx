@@ -66,36 +66,18 @@ const Hero = () => {
     );
   };
 
-  const scrollToProjects = (e) => {
+  const scrollToSection = (e, sectionId) => {
     e.preventDefault();
-    const projectsSection = document.getElementById("projects");
+    const section = document.getElementById(sectionId);
 
     if (typeof window.lenis !== "undefined") {
-      window.lenis.scrollTo(projectsSection, {
+      window.lenis.scrollTo(section, {
         duration: 1.5,
         offset: -80,
         easing: (t) => 1 - Math.pow(1 - t, 3),
       });
     } else {
-      projectsSection?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-  };
-
-  const scrollToContact = (e) => {
-    e.preventDefault();
-    const projectsSection = document.getElementById("contact");
-
-    if (typeof window.lenis !== "undefined") {
-      window.lenis.scrollTo(projectsSection, {
-        duration: 1.5,
-        offset: -80,
-        easing: (t) => 1 - Math.pow(1 - t, 3),
-      });
-    } else {
-      projectsSection?.scrollIntoView({
+      section?.scrollIntoView({
         behavior: "smooth",
         block: "start",
       });
@@ -107,14 +89,10 @@ const Hero = () => {
       id="home"
       className="relative flex min-h-screen items-center justify-center overflow-hidden pt-10"
     >
-      {/* Floating Orbs */}
-      <div className="absolute top-1/4 left-1/4 h-64 w-64 rounded-full bg-linear-to-r from-orange-500/10 to-orange-400/10 blur-3xl" />
-      <div className="absolute right-1/4 bottom-1/4 h-96 w-96 rounded-full bg-linear-to-r from-amber-500/5 to-amber-500/5 blur-3xl" />
-
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           {/* Availability Badge */}
-          <div className="font-SG mb-2 inline-flex scale-90 items-center gap-2 rounded-full bg-emerald-50 px-4 py-1 text-xs text-emerald-700 sm:scale-100 md:mb-6 md:text-sm dark:bg-emerald-900/30 dark:text-emerald-300">
+          <div className="font-SG mb-2 inline-flex scale-90 items-center gap-2 rounded-full bg-emerald-50 px-4 py-1 text-xs sm:scale-100 md:mb-6 md:text-sm dark:bg-emerald-900/30">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
@@ -128,9 +106,18 @@ const Hero = () => {
           </h1>
 
           {/* Subheading */}
-          <p className="mx-auto mt-4 max-w-xl tracking-tight sm:text-base sm:tracking-normal md:mt-6 md:text-lg xl:max-w-3xl xl:text-xl dark:text-neutral-300">
-            Freelance, passionate web developer focused on building modern,
-            high-performance applications with{" "}
+
+          <p className="mx-auto mt-4 mb-2 max-w-xl font-thin tracking-tight text-nowrap sm:text-base sm:tracking-normal md:mt-6 md:text-lg xl:max-w-3xl xl:text-xl">
+            Freelance Developer · Co-Founder at{" "}
+            <a
+              href="https://digitlab.cc"
+              className="hover:text-primary dark:hover:text-primary-dark hover:border-primary dark:hover:border-primary-dark border-b border-white"
+            >
+              DigitLab
+            </a>
+          </p>
+          <p className="mx-auto max-w-xl tracking-tight sm:text-base sm:tracking-normal md:text-lg xl:max-w-3xl xl:text-xl dark:text-neutral-300">
+            I focus on building modern, high-performance applications with{" "}
             <span className="font-semibold text-[#50a5b8] dark:text-[#77c1d2]">
               Alpine
             </span>
@@ -152,7 +139,7 @@ const Hero = () => {
           {/* CTA Buttons */}
           <div className="md:mt10 mt-6 flex flex-col items-center justify-around gap-4 sm:flex-row">
             <button
-              onClick={scrollToProjects}
+              onClick={(e) => scrollToSection(e, "projects")}
               className="group orange-gradient hover:shadow-primary/25 relative flex w-[80%] cursor-pointer items-center justify-center overflow-hidden rounded-full px-4 py-2 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:shadow-xl active:scale-95 md:w-1/2 md:px-8 md:py-3 md:text-lg xl:w-1/3"
             >
               <span className="relative z-10 flex items-center gap-2 group-hover:tracking-widest">
@@ -175,8 +162,8 @@ const Hero = () => {
             </button>
 
             <button
-              onClick={scrollToContact}
-              className="group hover:border-primary hover:text-primary border-primary dark:hover:text-primary-dark dark:border-primary-dark hover:text-primary flex w-[80%] cursor-pointer items-center justify-center rounded-full border bg-white/50 px-4 py-2 text-base font-semibold text-black transition-all duration-300 active:scale-95 md:w-1/2 md:px-8 md:py-3 md:text-lg xl:w-1/3 dark:bg-gray-900/50 dark:text-white dark:hover:border-orange-400"
+              onClick={(e) => scrollToSection(e, "contact")}
+              className="group hover:border-primary hover:text-primary border-primary dark:hover:text-primary-dark dark:border-primary-dark hover:text-primary flex w-[80%] cursor-pointer items-center justify-center rounded-full border px-4 py-2 text-base font-semibold text-black transition-all duration-300 active:scale-95 md:w-1/2 md:px-8 md:py-3 md:text-lg xl:w-1/3 dark:text-white dark:hover:border-orange-400"
             >
               <span className="flex items-center gap-2 group-hover:tracking-widest">
                 Get In Touch
@@ -200,7 +187,7 @@ const Hero = () => {
           {/* Stats - with counting animation */}
           <div
             id="stats-section"
-            className="mt-12 grid grid-cols-2 gap-4 md:mt-16 md:grid-cols-4 md:gap-6 xl:mt-20 xl:gap-8"
+            className="mt-10 grid grid-cols-2 gap-4 md:mt-16 md:grid-cols-4 md:gap-6 xl:mt-20 xl:gap-8"
           >
             {[
               {
@@ -228,7 +215,7 @@ const Hero = () => {
                 <div className="text-2xl font-bold text-neutral-900 md:text-3xl dark:text-white">
                   {stat.value}
                 </div>
-                <div className="leading-widest font-SG mt-2 text-xs tracking-tight text-neutral-600 sm:text-sm dark:text-neutral-400">
+                <div className="leading-widest font-SG mt-2 text-xs tracking-tight text-neutral-600 sm:text-sm xl:text-base dark:text-neutral-400">
                   {stat.label}
                 </div>
               </div>

@@ -11,7 +11,7 @@ const ComingSoon = ({ sectionName = "Projects", progress = "10%" }) => {
         </div>
 
         {/* Main Heading */}
-        <h2 className="mb-6 text-5xl font-bold tracking-tight text-slate-900 sm:text-6xl md:text-7xl dark:text-white">
+        <h2 className="font-heading mb-6 text-5xl font-bold tracking-tight text-slate-900 sm:text-6xl md:text-7xl dark:text-white">
           Coming{" "}
           <span className="relative inline-block">
             <span className="relative bg-gradient-to-r from-orange-600 to-orange-600 bg-clip-text text-transparent dark:from-orange-400 dark:to-orange-400">

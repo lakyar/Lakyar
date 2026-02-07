@@ -4,6 +4,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 @theme {
   --font-sans: "Manrope", system-ui, sans-serif;
+  --color-primary: #f54900;
   --color-primary-dark: #ff8704;
   --color-secondary: #8b5cf6; /* Violet-500 */
   --color-accent: #10b981; /* Emerald-500 */
