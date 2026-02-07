@@ -1,19 +1,115 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const Hero = () => {
+  const [counts, setCounts] = useState({
+    projects: 0,
+    years: 0,
+    satisfaction: 0,
+  });
+
+  const targetCounts = {
+    projects: 20,
+    years: 3,
+    satisfaction: 100,
+  };
+
+  const duration = 1500;
+  const frameRate = 240;
+  const totalFrames = Math.round(duration / (1000 / frameRate));
+  const countStarted = useRef(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !countStarted.current) {
+          countStarted.current = true;
+          startCounting();
+        }
+      },
+      { threshold: 0.5 },
+    );
+
+    const statsSection = document.getElementById("stats-section");
+    if (statsSection) observer.observe(statsSection);
+
+    return () => observer.disconnect();
+  }, []);
+
+  const startCounting = () => {
+    const increment = (target, current, setter) => {
+      const step = target / totalFrames;
+      let count = 0;
+
+      const timer = setInterval(() => {
+        count += step;
+        if (count >= target) {
+          count = target;
+          clearInterval(timer);
+        }
+        setter(Math.floor(count));
+      }, duration / totalFrames);
+    };
+
+    increment(targetCounts.projects, counts.projects, (val) =>
+      setCounts((prev) => ({ ...prev, projects: val })),
+    );
+    increment(targetCounts.years, counts.years, (val) =>
+      setCounts((prev) => ({ ...prev, years: val })),
+    );
+    increment(targetCounts.satisfaction, counts.satisfaction, (val) =>
+      setCounts((prev) => ({ ...prev, satisfaction: val })),
+    );
+  };
+
+  const scrollToProjects = (e) => {
+    e.preventDefault();
+    const projectsSection = document.getElementById("projects");
+
+    if (typeof window.lenis !== "undefined") {
+      window.lenis.scrollTo(projectsSection, {
+        duration: 1.5,
+        offset: -80,
+        easing: (t) => 1 - Math.pow(1 - t, 3),
+      });
+    } else {
+      projectsSection?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
+  const scrollToContact = (e) => {
+    e.preventDefault();
+    const projectsSection = document.getElementById("contact");
+
+    if (typeof window.lenis !== "undefined") {
+      window.lenis.scrollTo(projectsSection, {
+        duration: 1.5,
+        offset: -80,
+        easing: (t) => 1 - Math.pow(1 - t, 3),
+      });
+    } else {
+      projectsSection?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
   return (
     <section
       id="home"
-      className="relative flex h-screen items-center justify-center overflow-hidden pt-20"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden pt-20"
     >
       {/* Floating Orbs */}
-      <div className="absolute top-1/4 left-1/4 h-64 w-64 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 blur-3xl" />
-      <div className="absolute right-1/4 bottom-1/4 h-96 w-96 rounded-full bg-gradient-to-r from-amber-500/5 to-pink-500/5 blur-3xl" />
+      <div className="absolute top-1/4 left-1/4 h-64 w-64 rounded-full bg-linear-to-r from-orange-500/10 to-orange-400/10 blur-3xl" />
+      <div className="absolute right-1/4 bottom-1/4 h-96 w-96 rounded-full bg-linear-to-r from-amber-500/5 to-amber-500/5 blur-3xl" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           {/* Availability Badge */}
-          <div className="mb-8 inline-flex items-center gap-2 rounded-full bg-emerald-50 px-4 py-2 text-sm font-medium text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300">
+          <div className="font-SG mb-8 inline-flex items-center gap-2 rounded-full bg-emerald-50 px-4 py-1 text-xs text-emerald-700 md:text-sm dark:bg-emerald-900/30 dark:text-emerald-300">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
@@ -22,14 +118,14 @@ const Hero = () => {
           </div>
 
           {/* Main Headline */}
-          <h1 className="mx-auto max-w-4xl text-5xl font-bold tracking-tight text-slate-900 sm:text-6xl md:text-7xl lg:text-8xl dark:text-white">
-            Hi, I'm Lakyar
+          <h1 className="font-heading mx-auto text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl md:text-5xl lg:text-6xl dark:text-white">
+            Invictus Lakyar
           </h1>
 
           {/* Subheading */}
-          <p className="mx-auto mt-8 max-w-2xl text-xl text-slate-600 dark:text-slate-300">
-            Passionate web developer specializing in building modern, performant
-            applications with{" "}
+          <p className="mx-auto mt-8 max-w-xl text-slate-600 sm:text-base md:text-lg xl:max-w-3xl xl:text-xl dark:text-slate-300">
+            Freelance, passionate web developer focused on building modern,
+            high-performance applications with{" "}
             <span className="font-semibold text-[#50a5b8] dark:text-[#77c1d2]">
               Alpine
             </span>
@@ -42,17 +138,17 @@ const Hero = () => {
               Tailwind CSS
             </span>
             , and{" "}
-            <span className="font-semibold text-emerald-600 dark:text-emerald-400">
+            <span className="text-primary dark:text-primary-dark font-semibold">
               cutting-edge tech
             </span>
             . Let's turn your ideas into reality.
           </p>
 
           {/* CTA Buttons */}
-          <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            {/* <a
-              href="#projects"
-              className="group relative overflow-hidden rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/25 active:scale-95"
+          <div className="mt-12 flex flex-col items-center justify-around gap-4 sm:flex-row">
+            <button
+              onClick={scrollToProjects}
+              className="group orange-gradient hover:shadow-primary/25 relative flex w-[80%] cursor-pointer items-center justify-center overflow-hidden rounded-full px-4 py-2 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:shadow-xl active:scale-95 md:w-1/2 md:px-8 md:py-3 xl:w-1/3"
             >
               <span className="relative z-10 flex items-center gap-3">
                 View My Work
@@ -70,12 +166,12 @@ const Hero = () => {
                   />
                 </svg>
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-purple-700 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-            </a> */}
+              <div className="hover:orange-linear-hover absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+            </button>
 
-            <a
-              href="mailto:lakyarlinn@gmail.com"
-              className="group rounded-full border-2 border-slate-300 bg-white/50 px-8 py-4 text-lg font-semibold text-slate-800 backdrop-blur-sm transition-all duration-300 hover:border-blue-500 hover:bg-white/80 hover:text-blue-600 active:scale-95 dark:border-slate-700 dark:bg-slate-900/50 dark:text-white dark:hover:border-blue-400 dark:hover:bg-slate-800/80"
+            <button
+              onClick={scrollToContact}
+              className="group hover:border-primary hover:text-primary flex w-[80%] cursor-pointer items-center justify-center rounded-full border-2 border-slate-300 bg-white/50 px-4 py-2 text-lg font-semibold backdrop-blur-sm transition-all duration-300 active:scale-95 md:w-1/2 md:px-8 md:py-3 xl:w-1/3 dark:border-slate-700 dark:bg-gray-900/50 dark:text-white dark:hover:border-orange-400"
             >
               <span className="flex items-center gap-3">
                 Get In Touch
@@ -93,16 +189,34 @@ const Hero = () => {
                   />
                 </svg>
               </span>
-            </a>
+            </button>
           </div>
 
-          {/* Stats */}
-          <div className="mt-20 grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-4">
+          {/* Stats - with counting animation */}
+          <div
+            id="stats-section"
+            className="mt-20 grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-4"
+          >
             {[
-              { value: "20+", label: "Projects Built" },
-              { value: "3+", label: "Years Experience" },
-              { value: "100%", label: "Client Satisfaction" },
-              { value: "∞", label: "Cups of Coffee" },
+              {
+                value: `${counts.projects}+`,
+                label: "Projects Built",
+                suffix: "+",
+              },
+              {
+                value: `${counts.years}+`,
+                label: "Years Experience",
+                suffix: "+",
+              },
+              {
+                value: `${counts.satisfaction}%`,
+                label: "Client Satisfaction",
+                suffix: "%",
+              },
+              {
+                value: "∞",
+                label: "Cups of Coffee",
+              },
             ].map((stat, index) => (
               <div key={index} className="text-center">
                 <div className="text-3xl font-bold text-slate-900 dark:text-white">

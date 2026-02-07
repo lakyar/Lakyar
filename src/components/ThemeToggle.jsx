@@ -32,14 +32,14 @@ function ThemeToggle() {
       >
         {/* Main container - sleek pill shape */}
         <div
-          className={`relative h-8 w-16 overflow-hidden rounded-full border border-slate-300/50 bg-gradient-to-r from-slate-200 to-slate-300 shadow-sm transition-all duration-500 ease-out dark:border-slate-700/50 dark:from-slate-800 dark:to-slate-900 ${isHover ? "scale-105" : "scale-100"} `}
+          className={`relative h-8 w-16 overflow-hidden rounded-full border border-slate-300/50 bg-linear-to-r from-slate-200 to-slate-300 shadow-sm transition-all duration-500 ease-out dark:border-slate-700/50 dark:from-slate-800 dark:to-slate-900 ${isHover ? "scale-105" : "scale-100"} `}
         >
           {/* Animated gradient overlay */}
           <div
             className={`absolute inset-0 rounded-full transition-opacity duration-700 ${
               theme === "dark"
-                ? "bg-gradient-to-r from-blue-500/20 to-purple-500/20 opacity-100"
-                : "bg-gradient-to-r from-amber-300/30 to-orange-400/30 opacity-100"
+                ? "bg-linear-to-r from-amber-500/10 to-amber-500/10 opacity-100"
+                : "bg-linear-to-r from-amber-300/30 to-orange-400/30 opacity-100"
             } `}
           />
 
@@ -72,14 +72,14 @@ function ThemeToggle() {
           <div
             className={`absolute top-1 h-6 w-6 rounded-full shadow-md transition-all duration-700 ease-out ${
               theme === "dark"
-                ? "left-8 bg-gradient-to-br from-slate-300 to-slate-100"
-                : "left-1 bg-gradient-to-br from-amber-300 to-orange-400"
+                ? "left-8 bg-linear-to-br from-slate-300 to-slate-100"
+                : "left-1 bg-linear-to-br from-orange-500 to-orange-400"
             } flex items-center justify-center`}
           >
             {/* Inner dot */}
             <div
               className={`h-1.5 w-1.5 rounded-full transition-all duration-500 ${
-                theme === "dark" ? "bg-slate-500" : "bg-amber-600"
+                theme === "dark" ? "bg-slate-500" : "bg-orange-600"
               } `}
             />
           </div>

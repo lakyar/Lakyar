@@ -122,20 +122,20 @@ const Navbar = () => {
   return (
     <nav className="fixed top-4 left-1/2 z-50 w-full max-w-2xl -translate-x-1/2 px-4">
       <div
-        className={`relative mx-auto flex items-center justify-between rounded-full px-5 py-3 backdrop-blur-md transition-all duration-500 ${
+        className={`relative mx-auto flex items-center justify-between rounded-full bg-transparent px-5 py-2 transition-all duration-500 ${
           scrolled
-            ? "bg-white/90 shadow-xl dark:bg-slate-900/90"
-            : "bg-white/70 shadow-lg dark:bg-slate-900/70"
-        } border border-white/20 dark:border-slate-700/50`}
+            ? "scale-95 border shadow-lg backdrop-blur-sm md:shadow-xl"
+            : ""
+        } border-white/20 dark:border-slate-700/50`}
       >
-        {/* Navigation Links - Icon-only pill */}
+        {/* Navigation Links */}
         <div className="flex items-center gap-1 gap-x-3 rounded-full">
           {navLinks.map((link) => (
             <a
               key={link.id}
               href={link.href}
               onClick={(e) => handleClick(e, link.id, link.href)}
-              className={`group relative flex h-10 w-10 items-center justify-center rounded-full transition-all duration-300 ${
+              className={`group relative flex size-10 items-center justify-center rounded-full transition-all duration-300 active:scale-75 ${
                 activeLink === link.id
                   ? "scale-110 text-white"
                   : "text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
@@ -145,7 +145,7 @@ const Navbar = () => {
             >
               {/* Active Background */}
               <span
-                className={`absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-500 ease-out ${
+                className={`absolute inset-0 rounded-full bg-linear-to-r from-orange-400 to-orange-500 transition-all duration-500 ease-out ${
                   activeLink === link.id
                     ? "scale-100 opacity-100"
                     : "scale-0 opacity-0 group-hover:scale-100 group-hover:opacity-20"
@@ -154,7 +154,7 @@ const Navbar = () => {
 
               {/* Icon */}
               <span
-                className={`relative z-10 transition-transform duration-300 ${activeLink === link.id ? "scale-110" : "scale-100"} `}
+                className={`relative z-10 transition-transform duration-300 ${activeLink === link.id ? "scale-105" : "scale-100"} `}
               >
                 {link.icon}
               </span>
@@ -165,27 +165,17 @@ const Navbar = () => {
               >
                 {link.label}
               </span>
-
-              {/* Active Dot */}
-              <span
-                className={`absolute -bottom-1 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 transition-all duration-300 ${
-                  activeLink === link.id
-                    ? "scale-100 opacity-100"
-                    : "scale-0 opacity-0"
-                } `}
-              />
             </a>
           ))}
         </div>
 
         {/* Theme Toggle */}
         <div className="flex items-center gap-4">
-          <div className="h-6 w-px bg-slate-300 dark:bg-slate-700" />
           <ThemeToggle />
         </div>
 
         {/* Glow Effect */}
-        <div className="absolute inset-0 -z-10 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 blur-xl" />
+        <div className="absolute inset-0 -z-10 rounded-full bg-linear-to-r from-orange-500/5 to-orange-500/1 blur-xl" />
       </div>
     </nav>
   );

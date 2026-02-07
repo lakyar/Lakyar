@@ -5,13 +5,13 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Project from "./pages/Project";
 import Footer from "./components/Footer";
+import { useLenis } from "./hooks/useLenis";
 
 const App = () => {
+  useLenis();
+
   return (
     <Router>
-      {/* Background image */}
-      <div className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat opacity-20 dark:opacity-15"></div>
-
       {/* Main layout */}
       <div className="flex min-h-screen flex-col backdrop-blur-none">
         <Navbar />

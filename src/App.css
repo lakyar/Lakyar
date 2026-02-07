@@ -1,17 +1,17 @@
 @import "tailwindcss";
-/* @import "tw-animate-css"; */
 
 /* Tell Tailwind to use the .dark class for dark variant styles */
 @custom-variant dark (&:where(.dark, .dark *));
 @theme {
-  --color-primary: #ff0000; /* Blue-500 */
-  --color-primary-dark: #1d4ed8;
+  --font-sans: "Manrope", system-ui, sans-serif;
+  --color-primary-dark: #ff8704;
   --color-secondary: #8b5cf6; /* Violet-500 */
   --color-accent: #10b981; /* Emerald-500 */
   --color-blue1: #230a6d;
   --color-blue2: #01abfe;
   --font-display: "Arimo", sans-serif;
-  --font-heading: "Ubuntu", sans-serif;
+  --font-heading: "Anta", sans-serif;
+  --font-SG: "Space Grotesk", sans-serif;
 
   /* --font-sans: "Inter", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", monospace; */
@@ -21,40 +21,12 @@
   transition: all ease-in-out 0.3s;
 }
 
-/* ==================== */
-/* BUTTON UTILITIES */
-/* ==================== */
-@utility btn-base {
-  @apply focus-visible:ring-primary bg-blue1 inline-flex items-center justify-center rounded-lg font-semibold transition-all duration-300 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none active:scale-95 disabled:cursor-not-allowed disabled:opacity-50;
+@utility orange-gradient {
+  @apply bg-linear-to-r from-orange-600 to-orange-400 dark:from-orange-500 dark:to-orange-400;
 }
 
-@utility btn-primary {
-  @apply btn-base bg-primary hover:bg-primary-dark text-white shadow-md hover:shadow-lg;
-}
-
-@utility btn-secondary {
-  @apply btn-base bg-slate-100 text-slate-800 hover:bg-slate-200 dark:bg-slate-800 dark:text-white dark:hover:bg-slate-700;
-}
-
-@utility btn-outline {
-  @apply btn-base border-primary text-primary hover:bg-primary/10 border-2;
-}
-
-@utility btn-ghost {
-  @apply btn-base text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800;
-}
-
-/* Button Sizes */
-@utility btn-sm {
-  @apply px-3 py-1.5 text-sm;
-}
-
-@utility btn-md {
-  @apply px-5 py-2.5;
-}
-
-@utility btn-lg {
-  @apply px-7 py-3.5 text-lg;
+@utility orange-gradient-hover {
+  @apply bg-linear-to-r from-orange-600 to-orange-500 dark:from-orange-500 dark:to-orange-500;
 }
 
 /* ==================== */
@@ -118,39 +90,6 @@
   @apply grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3;
 }
 
-/* ==================== */
-/* FORM UTILITIES */
-/* ==================== */
-@utility input-base {
-  @apply focus:border-primary focus:ring-primary/20 w-full rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-slate-900 placeholder:text-slate-500 focus:ring-2 focus:outline-none dark:border-slate-600 dark:bg-slate-800 dark:text-white dark:placeholder:text-slate-400;
-}
-
-@utility label-base {
-  @apply mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300;
-}
-
-/* ==================== */
-/* BADGE/TAG UTILITIES */
-/* ==================== */
-@utility badge-base {
-  @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-medium;
-}
-
-@utility badge-primary {
-  @apply badge-base bg-primary/10 text-primary;
-}
-
-@utility badge-secondary {
-  @apply badge-base bg-slate-100 text-slate-800 dark:bg-slate-700 dark:text-slate-300;
-}
-
-/* ==================== */
-/* ANIMATION UTILITIES */
-/* ==================== */
-
-/* ==================== */
-/* CUSTOM SCROLLBAR */
-/* ==================== */
 ::-webkit-scrollbar {
   width: 4px;
 }
@@ -164,9 +103,9 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #8515fc;
+  background-color: var(--color-orange-600);
 }
 
 .dark ::-webkit-scrollbar-thumb {
-  background-color: var(--color-sky-400);
+  background-color: var(--color-orange-400);
 }
