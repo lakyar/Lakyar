@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import ComingSoon from "../components/ComingSoon";
 
 const Projects = () => {
   return (
-    <div>Projects</div>
-  )
-}
+    <section id="projects">
+      <ComingSoon sectionName="Projects" />
+    </section>
+  );
+};
 
-export default Projects
+export default Projects;

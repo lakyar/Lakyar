@@ -27,7 +27,7 @@ function ThemeToggle() {
         onClick={toggle}
         onMouseEnter={() => setIsHover(true)}
         onMouseLeave={() => setIsHover(false)}
-        className="group relative"
+        className="group relative cursor-pointer"
         aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
       >
         {/* Main container - sleek pill shape */}
@@ -84,15 +84,6 @@ function ThemeToggle() {
             />
           </div>
         </div>
-
-        {/* Hover effect lines */}
-        <div
-          className={`absolute -inset-2 rounded-full transition-all duration-300 ${
-            isHover
-              ? "border-2 border-slate-300/30 dark:border-slate-600/30"
-              : "border-0"
-          } pointer-events-none`}
-        />
       </button>
     </div>
   );
