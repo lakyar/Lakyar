@@ -99,14 +99,14 @@ const Contact = () => {
       className="relative min-h-screen overflow-hidden pt-24"
     >
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-16 text-center">
-          <h2 className="font-heading text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl md:text-6xl dark:text-white">
+        <div className="mb-16 text-start">
+          <h2 className="font-heading text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl md:text-5xl xl:text-6xl dark:text-white">
             Ready to{" "}
             <span className="bg-linear-to-r from-orange-500 to-amber-500 bg-clip-text text-transparent">
               Collaborate?
             </span>
           </h2>
-          <p className="mx-auto mt-4 max-w-xl tracking-tight sm:text-base sm:tracking-normal md:mt-6 md:text-lg xl:max-w-2xl xl:text-xl dark:text-neutral-300">
+          <p className="mt-4 max-w-xl tracking-tight sm:text-base sm:tracking-normal md:mt-6 md:text-lg xl:max-w-2xl xl:text-xl dark:text-neutral-300">
             Have a project in mind? Let's discuss how we can bring your ideas to
             life with{" "}
             <span className="font-semibold text-[#50a5b8] dark:text-[#77c1d2]">
@@ -187,73 +187,75 @@ const Contact = () => {
                 />
               </div>
 
-              <button
-                type="submit"
-                disabled={status === "sending"}
-                className={`group orange-gradient relative w-full overflow-hidden rounded-full py-2 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:shadow-xl hover:shadow-orange-500/25 active:scale-95 disabled:cursor-not-allowed md:py-3`}
-              >
-                <span className="relative z-10 flex items-center justify-center gap-3 group-hover:gap-6">
-                  {status === "sending" ? (
-                    <>
-                      <svg
-                        className="h-5 w-5 animate-spin"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                      >
-                        <circle
-                          className="opacity-25"
-                          cx="12"
-                          cy="12"
-                          r="10"
+              <div className="flex w-full justify-center">
+                <button
+                  type="submit"
+                  disabled={status === "sending"}
+                  className={`group orange-gradient relative w-[80%] cursor-pointer overflow-hidden rounded-lg py-1.5 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:shadow-xl hover:shadow-orange-500/25 active:scale-95 disabled:cursor-not-allowed md:py-2`}
+                >
+                  <span className="relative z-10 flex items-center justify-center gap-3 group-hover:gap-6">
+                    {status === "sending" ? (
+                      <>
+                        <svg
+                          className="h-5 w-5 animate-spin"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                          />
+                          <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                          />
+                        </svg>
+                        Sending...
+                      </>
+                    ) : status === "sent" ? (
+                      <>
+                        <svg
+                          className="h-5 w-5"
+                          fill="none"
+                          viewBox="0 0 24 24"
                           stroke="currentColor"
-                          strokeWidth="4"
-                        />
-                        <path
-                          className="opacity-75"
-                          fill="currentColor"
-                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                        />
-                      </svg>
-                      Sending...
-                    </>
-                  ) : status === "sent" ? (
-                    <>
-                      <svg
-                        className="h-5 w-5"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                      Message Sent!
-                    </>
-                  ) : (
-                    <>
-                      Send
-                      <svg
-                        className="h-5 w-5 rotate-90"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
-                        />
-                      </svg>
-                    </>
-                  )}
-                </span>
-                <div className="hover:orange-gradient-hover absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-              </button>
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
+                        Message Sent!
+                      </>
+                    ) : (
+                      <>
+                        Send
+                        <svg
+                          className="h-5 w-5 rotate-90"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+                          />
+                        </svg>
+                      </>
+                    )}
+                  </span>
+                  <div className="hover:orange-gradient-hover absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                </button>
+              </div>
             </form>
           </div>
 
