@@ -107,7 +107,7 @@ const Hero = () => {
 
           {/* Subheading */}
 
-          <p className="mx-auto mt-4 mb-2 max-w-xl font-thin tracking-tight text-nowrap sm:text-base sm:tracking-normal md:mt-6 md:text-lg xl:max-w-3xl xl:text-xl">
+          <p className="mx-auto mt-4 mb-2 max-w-xl font-thin tracking-tighter text-nowrap sm:text-base sm:tracking-normal md:mt-6 md:text-lg xl:max-w-3xl xl:text-xl">
             Freelance Developer · Co-Founder at{" "}
             <a
               href="https://digitlab.cc"
@@ -116,8 +116,8 @@ const Hero = () => {
               DigitLab
             </a>
           </p>
-          <p className="mx-auto max-w-xl tracking-tight sm:text-base sm:tracking-normal md:text-lg xl:max-w-3xl xl:text-xl dark:text-neutral-300">
-            I focus on building modern, high-performance applications with{" "}
+          <p className="mx-auto max-w-xl tracking-tighter sm:text-base sm:tracking-normal md:text-lg xl:max-w-3xl xl:text-xl dark:text-neutral-300">
+            I focus on building modern, high-performance apps with{" "}
             <span className="font-semibold text-[#50a5b8] dark:text-[#77c1d2]">
               Alpine
             </span>
