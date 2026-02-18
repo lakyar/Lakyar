@@ -14,7 +14,7 @@ export const projectData = [
     link: "https://aninewstage.org/",
     techStack:
       "TALL Stack, Filament Admin, Docker Swarm, EC2, Jenkins, GitHub Actions",
-    startDate: "2022-10-14",
+    startDate: "2023-10-14",
     endDate: null,
     images: [
       { src: "https://i.ibb.co/fGVrky6Z/pj-ans1.png", name: "Home page" },

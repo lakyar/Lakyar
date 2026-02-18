@@ -18,10 +18,6 @@
   --font-mono: "JetBrains Mono", monospace; */
 }
 
-* {
-  transition: all ease-in-out 0.3s;
-}
-
 @utility orange-gradient {
   @apply bg-linear-to-r from-orange-600 to-orange-400 dark:from-orange-500 dark:to-orange-400;
 }

@@ -10,7 +10,7 @@ const Hero = () => {
 
   const targetCounts = {
     projects: 20,
-    years: 3,
+    years: 2,
     satisfaction: 100,
     coffeeCups: 9999,
   };
@@ -111,7 +111,7 @@ const Hero = () => {
             Freelance Developer · Co-Founder at{" "}
             <a
               href="https://digitlab.cc"
-              className="hover:text-primary dark:hover:text-primary-dark hover:border-primary dark:hover:border-primary-dark border-b border-white"
+              className="hover:text-primary dark:hover:text-primary-dark hover:border-primary dark:hover:border-primary-dark border-b border-black duration-300 dark:border-white"
             >
               DigitLab
             </a>
