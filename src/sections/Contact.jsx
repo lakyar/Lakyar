@@ -204,7 +204,7 @@ const Contact = () => {
                   disabled={status === "sending"}
                   className={`group orange-gradient relative w-[80%] cursor-pointer overflow-hidden rounded-lg py-1.5 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:shadow-xl hover:shadow-orange-500/25 active:scale-95 disabled:cursor-not-allowed md:py-2`}
                 >
-                  <span className="relative z-10 flex items-center justify-center gap-3 group-hover:gap-6">
+                  <span className="relative z-10 flex items-center justify-center gap-3 duration-300 group-hover:gap-6">
                     {status === "sending" ? (
                       <>
                         <svg

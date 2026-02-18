@@ -142,7 +142,7 @@ const Hero = () => {
               onClick={(e) => scrollToSection(e, "projects")}
               className="group orange-gradient hover:shadow-primary/25 relative flex w-[80%] cursor-pointer items-center justify-center overflow-hidden rounded-full px-4 py-2 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:shadow-xl active:scale-95 md:w-1/2 md:px-8 md:py-3 md:text-lg xl:w-1/3"
             >
-              <span className="relative z-10 flex items-center gap-2 group-hover:tracking-widest">
+              <span className="relative z-10 flex items-center gap-2 duration-300 group-hover:tracking-widest">
                 View My Work
                 <svg
                   className="group-hover:tranneutral-x-1 h-5 w-5 transition-transform duration-300"
@@ -163,12 +163,12 @@ const Hero = () => {
 
             <button
               onClick={(e) => scrollToSection(e, "contact")}
-              className="group hover:border-primary hover:text-primary border-primary dark:hover:text-primary-dark dark:border-primary-dark hover:text-primary flex w-[80%] cursor-pointer items-center justify-center rounded-full border px-4 py-2 text-base font-semibold text-black transition-all duration-300 active:scale-95 md:w-1/2 md:px-8 md:py-3 md:text-lg xl:w-1/3 dark:text-white dark:hover:border-orange-400"
+              className="group hover:border-primary hover:text-primary border-primary dark:hover:text-primary-dark dark:border-primary-dark flex w-[80%] cursor-pointer items-center justify-center rounded-full border px-4 py-2 text-base font-semibold text-black transition-all duration-300 active:scale-95 md:w-1/2 md:px-8 md:py-3 md:text-lg xl:w-1/3 dark:text-white dark:hover:border-orange-400"
             >
-              <span className="flex items-center gap-2 group-hover:tracking-widest">
+              <span className="flex items-center gap-2 duration-300 group-hover:tracking-widest">
                 Get In Touch
                 <svg
-                  className="group-hover:tranneutral-x-1 group-hover:text-primary dark:group-hover:text-primary-dark h-5 w-5 text-black dark:text-white"
+                  className="group-hover:tranneutral-x-1 group-hover:text-primary dark:group-hover:text-primary-dark h-5 w-5 text-black duration-300 dark:text-white"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"

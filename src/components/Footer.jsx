@@ -12,6 +12,14 @@ import {
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
+  const scrollToSection = (e, sectionId) => {
+    e.preventDefault();
+    const element = document.querySelector(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <footer className="orange-gradient relative m-4 overflow-hidden rounded-4xl p-8 text-neutral-200 md:m-10 md:p-12 lg:p-16 dark:text-neutral-900">
       <div className="relative z-10 mx-auto max-w-7xl">
@@ -37,7 +45,6 @@ const Footer = () => {
               >
                 <FaTelegram className="h-5 w-5" />
               </a>
-
               <a
                 href="https://github.com/lakyar"
                 className="rounded-lg p-2 transition-all hover:scale-110 hover:bg-white/20"
@@ -57,21 +64,50 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="font-heading text-lg font-semibold">Quick Links</h4>
             <ul className="space-y-2 text-sm">
-              {["Home", "Projects", "About", "Contact"].map((item) => (
-                <li key={item}>
-                  <a
-                    href="#"
-                    className="group hover: flex items-center gap-2 transition-colors"
-                  >
-                    <span className="size-0 rounded-full bg-neutral-900 transition-all group-hover:size-1.5"></span>
-                    {item}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <a
+                  href="#home"
+                  onClick={(e) => scrollToSection(e, "#home")}
+                  className="group flex items-center gap-2 transition-colors"
+                >
+                  <span className="size-0 rounded-full bg-neutral-900 transition-all group-hover:size-1.5"></span>
+                  Home
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#skills"
+                  onClick={(e) => scrollToSection(e, "#skills")}
+                  className="group flex items-center gap-2 transition-colors"
+                >
+                  <span className="size-0 rounded-full bg-neutral-900 transition-all group-hover:size-1.5"></span>
+                  Skills
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#projects"
+                  onClick={(e) => scrollToSection(e, "#projects")}
+                  className="group flex items-center gap-2 transition-colors"
+                >
+                  <span className="size-0 rounded-full bg-neutral-900 transition-all group-hover:size-1.5"></span>
+                  Projects
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  onClick={(e) => scrollToSection(e, "#contact")}
+                  className="group flex items-center gap-2 transition-colors"
+                >
+                  <span className="size-0 rounded-full bg-neutral-900 transition-all group-hover:size-1.5"></span>
+                  Contact
+                </a>
+              </li>
             </ul>
           </div>
 
-          {/* Services */}
+          {/* Skills */}
           <div className="space-y-4">
             <h4 className="font-heading text-lg font-semibold">Skills</h4>
             <ul className="space-y-2 text-sm">
@@ -82,16 +118,10 @@ const Footer = () => {
                 "Consulting",
               ].map((item) => (
                 <li key={item}>
-                  <a href="#" className="hover: transition-colors">
-                    {item}
-                  </a>
+                  <span className="transition-colors">{item}</span>
                 </li>
               ))}
             </ul>
-          </div>
-          {/* Services */}
-          <div className="space-y-4">
-            <img src="./" alt="" />
           </div>
         </div>
 
