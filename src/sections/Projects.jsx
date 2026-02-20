@@ -5,7 +5,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { Link } from "react-router-dom";
-import SplitText from "gsap/SplitText.js";
 
 const Projects = () => {
   const [shuffledProjects] = useState(() =>
@@ -70,7 +69,8 @@ const Projects = () => {
             const scale = getRandomScale();
 
             return (
-              <div
+              <Link
+                to={`/project/${project.slug}`}
                 key={project.id}
                 ref={(el) => (cardsRef.current[index] = el)}
                 className="project-card group relative w-[80%] rounded-lg sm:w-[45%] lg:w-[30%]"
@@ -109,7 +109,7 @@ const Projects = () => {
                     {project.description}
                   </h3>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>

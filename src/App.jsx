@@ -12,6 +12,7 @@ import Lenis from "lenis";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
+import Project from "./pages/Project";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -80,14 +81,8 @@ const AppContent = () => {
         <main className="grow">
           <Routes>
             <Route path="/" element={<Home />} />
-            {/* <Route
-                            path="/project/:slug"
-                            element={<ProjectDetail />}
-                        />
-                        <Route
-                            path="/member/:name"
-                            element={<MemberDetail />}
-                        /> */}
+            <Route path="/project/:slug" element={<Project />} />
+            {/* <Route path="/member/:name" element={<MemberDetail />} /> */}
           </Routes>
         </main>
 

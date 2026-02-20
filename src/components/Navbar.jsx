@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from "react";
 import ThemeToggle from "./ThemeToggle";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [activeLink, setActiveLink] = useState("home");
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHomePage = location.pathname === "/";
 
   const navLinks = [
     {
       id: "home",
       label: "Home",
-      href: "#home",
+      href: "/#home",
       icon: (
         <svg
           className="h-5 w-5"
@@ -29,7 +33,7 @@ const Navbar = () => {
     {
       id: "skills",
       label: "Skills",
-      href: "#skills",
+      href: "/#skills",
       icon: (
         <svg
           className="h-5 w-5"
@@ -49,7 +53,7 @@ const Navbar = () => {
     {
       id: "projects",
       label: "Projects",
-      href: "#projects",
+      href: "/#projects",
       icon: (
         <svg
           className="h-5 w-5"
@@ -69,7 +73,7 @@ const Navbar = () => {
     {
       id: "contact",
       label: "Contact",
-      href: "#contact",
+      href: "/#contact",
       icon: (
         <svg
           className="h-5 w-5"
@@ -92,31 +96,59 @@ const Navbar = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
 
-      // Update active link based on scroll position
-      const sections = navLinks.map((link) =>
-        document.querySelector(link.href),
-      );
-      const scrollPosition = window.scrollY + 100;
+      // Only update active link on homepage
+      if (isHomePage) {
+        const sections = navLinks.map((link) => {
+          const id = link.href.split("#")[1];
+          return id ? document.getElementById(id) : null;
+        });
+        const scrollPosition = window.scrollY + 100;
 
-      for (let i = sections.length - 1; i >= 0; i--) {
-        if (sections[i] && scrollPosition >= sections[i].offsetTop) {
-          setActiveLink(navLinks[i].id);
-          break;
+        for (let i = sections.length - 1; i >= 0; i--) {
+          if (sections[i] && scrollPosition >= sections[i].offsetTop) {
+            setActiveLink(navLinks[i].id);
+            break;
+          }
         }
       }
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isHomePage]);
+
+  // Set active link based on current page when not on homepage
+  useEffect(() => {
+    if (!isHomePage) {
+      setActiveLink("home");
+    }
+  }, [location.pathname, isHomePage]);
 
   const handleClick = (e, id, href) => {
     e.preventDefault();
     setActiveLink(id);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+
+    if (href.includes("#") && !isHomePage) {
+      // Navigate to homepage first, then scroll to section
+      window.location.href = href;
+    } else if (href.includes("#") && isHomePage) {
+      // On homepage, just scroll to section
+      const element = document.getElementById(href.split("#")[1]);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // Regular navigation to different page
+      window.location.href = href;
     }
+  };
+
+  const goBack = () => {
+    navigate(-1);
+  };
+
+  const goHome = () => {
+    navigate("/");
   };
 
   return (
@@ -128,53 +160,113 @@ const Navbar = () => {
             : ""
         } border-white/20 dark:border-neutral-700/50`}
       >
-        {/* Navigation Links */}
+        {/* Navigation Links - Conditional */}
         <div className="flex items-center gap-1 gap-x-3 rounded-full">
-          {navLinks.map((link) => (
-            <a
-              key={link.id}
-              href={link.href}
-              onClick={(e) => handleClick(e, link.id, link.href)}
-              className={`group relative flex size-10 items-center justify-center rounded-full transition-all duration-300 active:scale-75 ${
-                activeLink === link.id
-                  ? "scale-110"
-                  : "text-neutral-800 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white"
-              } `}
-              aria-label={link.label}
-              title={link.label}
-            >
-              {/* Active Background */}
-              <span
-                className={`absolute inset-0 rounded-full bg-linear-to-r from-orange-400 to-orange-500 transition-all duration-500 ease-out ${
+          {isHomePage ? (
+            navLinks.map((link) => (
+              <a
+                key={link.id}
+                href={link.href}
+                onClick={(e) => handleClick(e, link.id, link.href)}
+                className={`group relative flex size-10 items-center justify-center rounded-full transition-all duration-300 active:scale-75 ${
                   activeLink === link.id
-                    ? "scale-100 opacity-100"
-                    : "scale-0 opacity-0 group-hover:scale-100 group-hover:opacity-20"
+                    ? "scale-110"
+                    : "text-neutral-800 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white"
                 } `}
-              />
-
-              {/* Icon */}
-              <span
-                className={`relative z-10 transition-transform duration-300 ${activeLink === link.id ? "scale-105" : "scale-100"} `}
+                aria-label={link.label}
+                title={link.label}
               >
-                {link.icon}
-              </span>
+                {/* Active Background */}
+                <span
+                  className={`absolute inset-0 rounded-full bg-linear-to-r from-orange-400 to-orange-500 transition-all duration-500 ease-out ${
+                    activeLink === link.id
+                      ? "scale-100 opacity-100"
+                      : "scale-0 opacity-0 group-hover:scale-100 group-hover:opacity-20"
+                  } `}
+                />
 
-              {/* Tooltip */}
-              <span
-                className={`disabled: absolute -top-4 left-1/2 -translate-x-1/2 rounded-md bg-neutral-900 px-2 py-0 text-xs whitespace-nowrap text-white opacity-0 shadow-lg transition-all duration-300 group-hover:opacity-100 dark:bg-white dark:text-neutral-900 ${activeLink === link.id ? "hidden" : ""} `}
+                {/* Icon */}
+                <span
+                  className={`relative z-10 transition-transform duration-300 ${
+                    activeLink === link.id ? "scale-105" : "scale-100"
+                  } `}
+                >
+                  {link.icon}
+                </span>
+
+                {/* Tooltip */}
+                <span
+                  className={`absolute -top-4 left-1/2 -translate-x-1/2 rounded-md bg-neutral-900 px-2 py-0 text-xs whitespace-nowrap text-white opacity-0 shadow-lg transition-all duration-300 group-hover:opacity-100 dark:bg-white dark:text-neutral-900 ${
+                    activeLink === link.id ? "hidden" : ""
+                  } `}
+                >
+                  {link.label}
+                </span>
+              </a>
+            ))
+          ) : (
+            <>
+              <button
+                onClick={goBack}
+                className="group relative flex size-10 cursor-pointer items-center justify-center rounded-full text-neutral-800 transition-all duration-300 hover:text-neutral-900 active:scale-75 dark:text-neutral-300 dark:hover:text-white"
+                aria-label="Go back"
+                title="Go back"
               >
-                {link.label}
-              </span>
-            </a>
-          ))}
+                <span className="absolute inset-0 scale-0 rounded-full bg-linear-to-r from-orange-400 to-orange-500 opacity-0 transition-all duration-500 ease-out group-hover:scale-100 group-hover:opacity-20" />
+                <span className="relative z-10">
+                  <svg
+                    className="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                    />
+                  </svg>
+                </span>
+                <span className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-md bg-neutral-900 px-2 py-0 text-xs whitespace-nowrap text-white opacity-0 shadow-lg transition-all duration-300 group-hover:opacity-100 dark:bg-white dark:text-neutral-900">
+                  Back
+                </span>
+              </button>
+
+              <button
+                onClick={goHome}
+                className="group relative flex size-10 cursor-pointer items-center justify-center rounded-full text-neutral-800 transition-all duration-300 hover:text-neutral-900 active:scale-75 dark:text-neutral-300 dark:hover:text-white"
+                aria-label="Home"
+                title="Home"
+              >
+                <span className="absolute inset-0 scale-0 rounded-full bg-linear-to-r from-orange-400 to-orange-500 opacity-0 transition-all duration-500 ease-out group-hover:scale-100 group-hover:opacity-20" />
+                <span className="relative z-10">
+                  <svg
+                    className="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                    />
+                  </svg>
+                </span>
+                <span className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-md bg-neutral-900 px-2 py-0 text-xs whitespace-nowrap text-white opacity-0 shadow-lg transition-all duration-300 group-hover:opacity-100 dark:bg-white dark:text-neutral-900">
+                  Home
+                </span>
+              </button>
+            </>
+          )}
         </div>
 
-        {/* Theme Toggle */}
         <div className="flex items-center gap-4">
           <ThemeToggle />
         </div>
 
-        {/* Glow Effect */}
         <div className="absolute inset-0 -z-10 rounded-full bg-linear-to-r from-orange-500/5 to-orange-500/1 blur-xl" />
       </div>
     </nav>
