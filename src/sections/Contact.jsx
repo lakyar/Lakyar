@@ -107,7 +107,7 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="relative min-h-screen overflow-hidden pt-24"
+      className="relative min-h-screen overflow-hidden py-20"
     >
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-16 text-start">
@@ -117,13 +117,15 @@ const Contact = () => {
               Collaborate?
             </span>
           </h2>
-          <p className="mt-4 max-w-xl tracking-tight sm:text-base sm:tracking-normal md:mt-6 md:text-lg xl:max-w-2xl xl:text-xl dark:text-neutral-300">
+          <p className="mt-4 max-w-2xl tracking-tight sm:text-base sm:tracking-normal md:mt-6 md:text-lg xl:max-w-4xl xl:text-xl dark:text-neutral-300">
             Have a project in mind? Let's discuss how we can bring your ideas to
             life with{" "}
             <span className="font-semibold text-[#50a5b8] dark:text-[#77c1d2]">
               cutting-edge tech
             </span>
-            .
+            . Whether you need frontend help, want to collaborate, or just have
+            feedback — I'm all ears. Open to advice, opportunities, and cool
+            projects. Let's build something great together!
           </p>
         </div>
 
@@ -149,7 +151,7 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     className="focus:border-primary-dark shadow-primary/30 w-full rounded-lg border border-neutral-300 px-3 py-2 text-neutral-900 shadow-inner outline-none placeholder:text-neutral-500 dark:border-neutral-700 dark:text-white dark:placeholder:text-neutral-400"
-                    placeholder="John Doe"
+                    placeholder="John Wick"
                   />
                 </div>
 
@@ -173,12 +175,11 @@ const Contact = () => {
                 <label className="mb-2 block text-sm font-medium text-neutral-700 dark:text-neutral-300">
                   Subject
                 </label>
-                <textarea
+                <input
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  rows="1"
                   className="focus:border-primary-dark shadow-primary/30 w-full rounded-lg border border-neutral-300 px-3 py-2 text-neutral-900 shadow-inner outline-none placeholder:text-neutral-500 dark:border-neutral-700 dark:text-white dark:placeholder:text-neutral-400"
                   placeholder="Subject of your message..."
                 />
@@ -194,7 +195,7 @@ const Contact = () => {
                   required
                   rows="4"
                   className="focus:border-primary-dark shadow-primary/30 w-full rounded-lg border border-neutral-300 px-3 py-2 text-neutral-900 shadow-inner outline-none placeholder:text-neutral-500 dark:border-neutral-700 dark:text-white dark:placeholder:text-neutral-400"
-                  placeholder="Tell me about your project, timeline, and budget..."
+                  placeholder="Tell me about your project idea, interest, or just say hi! 👋"
                 />
               </div>
 
@@ -202,7 +203,7 @@ const Contact = () => {
                 <button
                   type="submit"
                   disabled={status === "sending"}
-                  className={`group orange-gradient relative w-[80%] cursor-pointer overflow-hidden rounded-lg py-1.5 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:shadow-xl hover:shadow-orange-500/25 active:scale-95 disabled:cursor-not-allowed md:py-2`}
+                  className={`group orange-gradient relative w-[80%] cursor-pointer overflow-hidden rounded-lg py-1.5 text-lg font-semibold text-black shadow-lg transition-all duration-300 hover:shadow-xl hover:shadow-orange-500/25 active:scale-95 disabled:cursor-not-allowed md:py-2`}
                 >
                   <span className="relative z-10 flex items-center justify-center gap-3 duration-300 group-hover:gap-6">
                     {status === "sending" ? (

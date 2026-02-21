@@ -70,6 +70,26 @@ const Navbar = () => {
         </svg>
       ),
     },
+    // {
+    //   id: "blogs",
+    //   label: "blogs",
+    //   href: "/#blogs",
+    //   icon: (
+    //     <svg
+    //       className="h-5 w-5"
+    //       fill="none"
+    //       viewBox="0 0 24 24"
+    //       stroke="currentColor"
+    //     >
+    //       <path
+    //         strokeLinecap="round"
+    //         strokeLinejoin="round"
+    //         strokeWidth={1.5}
+    //         d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z"
+    //       />
+    //     </svg>
+    //   ),
+    // },
     {
       id: "contact",
       label: "Contact",
@@ -152,124 +172,124 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-4 left-1/2 z-50 w-full max-w-2xl -translate-x-1/2 px-4">
-      <div
-        className={`relative mx-auto flex items-center justify-between rounded-full bg-transparent px-5 py-2 transition-all duration-500 ${
-          scrolled
-            ? "scale-95 border shadow-lg backdrop-blur-sm md:shadow-xl"
-            : ""
-        } border-white/20 dark:border-neutral-700/50`}
-      >
-        {/* Navigation Links - Conditional */}
-        <div className="flex items-center gap-1 gap-x-3 rounded-full">
-          {isHomePage ? (
-            navLinks.map((link) => (
-              <a
-                key={link.id}
-                href={link.href}
-                onClick={(e) => handleClick(e, link.id, link.href)}
-                className={`group relative flex size-10 items-center justify-center rounded-full transition-all duration-300 active:scale-75 ${
-                  activeLink === link.id
-                    ? "scale-110"
-                    : "text-neutral-800 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white"
-                } `}
-                aria-label={link.label}
-                title={link.label}
-              >
-                {/* Active Background */}
-                <span
-                  className={`absolute inset-0 rounded-full bg-linear-to-r from-orange-400 to-orange-500 transition-all duration-500 ease-out ${
+    <header>
+      <nav className="fixed top-4 left-1/2 z-50 w-full max-w-2xl -translate-x-1/2 px-4">
+        <div
+          className={`relative mx-auto flex items-center justify-between rounded-full bg-transparent px-5 py-2 backdrop-blur-sm transition-all duration-500 ${
+            scrolled ? "scale-95 border shadow-lg md:shadow-xl" : ""
+          } border-white/20 dark:border-neutral-700/50`}
+        >
+          {/* Navigation Links - Conditional */}
+          <div className="flex items-center gap-1 gap-x-3 rounded-full">
+            {isHomePage ? (
+              navLinks.map((link) => (
+                <a
+                  key={link.id}
+                  href={link.href}
+                  onClick={(e) => handleClick(e, link.id, link.href)}
+                  className={`group relative flex size-9 items-center justify-center rounded-full transition-all duration-300 active:scale-75 md:size-10 ${
                     activeLink === link.id
-                      ? "scale-100 opacity-100"
-                      : "scale-0 opacity-0 group-hover:scale-100 group-hover:opacity-20"
+                      ? "scale-110"
+                      : "text-neutral-800 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white"
                   } `}
-                />
-
-                {/* Icon */}
-                <span
-                  className={`relative z-10 transition-transform duration-300 ${
-                    activeLink === link.id ? "scale-105" : "scale-100"
-                  } `}
+                  aria-label={link.label}
+                  title={link.label}
                 >
-                  {link.icon}
-                </span>
+                  {/* Active Background */}
+                  <span
+                    className={`absolute inset-0 rounded-full bg-linear-to-r from-orange-400 to-orange-500 transition-all duration-500 ease-out ${
+                      activeLink === link.id
+                        ? "scale-100 opacity-100"
+                        : "scale-0 opacity-0 group-hover:scale-100 group-hover:opacity-20"
+                    } `}
+                  />
 
-                {/* Tooltip */}
-                <span
-                  className={`absolute -top-4 left-1/2 -translate-x-1/2 rounded-md bg-neutral-900 px-2 py-0 text-xs whitespace-nowrap text-white opacity-0 shadow-lg transition-all duration-300 group-hover:opacity-100 dark:bg-white dark:text-neutral-900 ${
-                    activeLink === link.id ? "hidden" : ""
-                  } `}
+                  {/* Icon */}
+                  <span
+                    className={`relative z-10 transition-transform duration-300 ${
+                      activeLink === link.id ? "scale-105" : "scale-100"
+                    } `}
+                  >
+                    {link.icon}
+                  </span>
+
+                  {/* Tooltip */}
+                  <span
+                    className={`absolute -top-4 left-1/2 -translate-x-1/2 rounded-md bg-neutral-900 px-2 py-0 text-xs whitespace-nowrap text-white opacity-0 shadow-lg transition-all duration-300 group-hover:opacity-100 dark:bg-white dark:text-neutral-900 ${
+                      activeLink === link.id ? "hidden" : ""
+                    } `}
+                  >
+                    {link.label}
+                  </span>
+                </a>
+              ))
+            ) : (
+              <>
+                <button
+                  onClick={goBack}
+                  className="group relative flex size-10 cursor-pointer items-center justify-center rounded-full text-neutral-800 transition-all duration-300 hover:text-neutral-900 active:scale-75 dark:text-neutral-300 dark:hover:text-white"
+                  aria-label="Go back"
+                  title="Go back"
                 >
-                  {link.label}
-                </span>
-              </a>
-            ))
-          ) : (
-            <>
-              <button
-                onClick={goBack}
-                className="group relative flex size-10 cursor-pointer items-center justify-center rounded-full text-neutral-800 transition-all duration-300 hover:text-neutral-900 active:scale-75 dark:text-neutral-300 dark:hover:text-white"
-                aria-label="Go back"
-                title="Go back"
-              >
-                <span className="absolute inset-0 scale-0 rounded-full bg-linear-to-r from-orange-400 to-orange-500 opacity-0 transition-all duration-500 ease-out group-hover:scale-100 group-hover:opacity-20" />
-                <span className="relative z-10">
-                  <svg
-                    className="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M10 19l-7-7m0 0l7-7m-7 7h18"
-                    />
-                  </svg>
-                </span>
-                <span className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-md bg-neutral-900 px-2 py-0 text-xs whitespace-nowrap text-white opacity-0 shadow-lg transition-all duration-300 group-hover:opacity-100 dark:bg-white dark:text-neutral-900">
-                  Back
-                </span>
-              </button>
+                  <span className="absolute inset-0 scale-0 rounded-full bg-linear-to-r from-orange-400 to-orange-500 opacity-0 transition-all duration-500 ease-out group-hover:scale-100 group-hover:opacity-20" />
+                  <span className="relative z-10">
+                    <svg
+                      className="h-5 w-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                      />
+                    </svg>
+                  </span>
+                  <span className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-md bg-neutral-900 px-2 py-0 text-xs whitespace-nowrap text-white opacity-0 shadow-lg transition-all duration-300 group-hover:opacity-100 dark:bg-white dark:text-neutral-900">
+                    Back
+                  </span>
+                </button>
 
-              <button
-                onClick={goHome}
-                className="group relative flex size-10 cursor-pointer items-center justify-center rounded-full text-neutral-800 transition-all duration-300 hover:text-neutral-900 active:scale-75 dark:text-neutral-300 dark:hover:text-white"
-                aria-label="Home"
-                title="Home"
-              >
-                <span className="absolute inset-0 scale-0 rounded-full bg-linear-to-r from-orange-400 to-orange-500 opacity-0 transition-all duration-500 ease-out group-hover:scale-100 group-hover:opacity-20" />
-                <span className="relative z-10">
-                  <svg
-                    className="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                    />
-                  </svg>
-                </span>
-                <span className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-md bg-neutral-900 px-2 py-0 text-xs whitespace-nowrap text-white opacity-0 shadow-lg transition-all duration-300 group-hover:opacity-100 dark:bg-white dark:text-neutral-900">
-                  Home
-                </span>
-              </button>
-            </>
-          )}
+                <button
+                  onClick={goHome}
+                  className="group relative flex size-10 cursor-pointer items-center justify-center rounded-full text-neutral-800 transition-all duration-300 hover:text-neutral-900 active:scale-75 dark:text-neutral-300 dark:hover:text-white"
+                  aria-label="Home"
+                  title="Home"
+                >
+                  <span className="absolute inset-0 scale-0 rounded-full bg-linear-to-r from-orange-400 to-orange-500 opacity-0 transition-all duration-500 ease-out group-hover:scale-100 group-hover:opacity-20" />
+                  <span className="relative z-10">
+                    <svg
+                      className="h-5 w-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                      />
+                    </svg>
+                  </span>
+                  <span className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-md bg-neutral-900 px-2 py-0 text-xs whitespace-nowrap text-white opacity-0 shadow-lg transition-all duration-300 group-hover:opacity-100 dark:bg-white dark:text-neutral-900">
+                    Home
+                  </span>
+                </button>
+              </>
+            )}
+          </div>
+
+          <div className="flex items-center gap-4">
+            <ThemeToggle />
+          </div>
+
+          <div className="absolute inset-0 -z-10 rounded-full bg-linear-to-r from-orange-500/5 to-orange-500/1 blur-xl" />
         </div>
-
-        <div className="flex items-center gap-4">
-          <ThemeToggle />
-        </div>
-
-        <div className="absolute inset-0 -z-10 rounded-full bg-linear-to-r from-orange-500/5 to-orange-500/1 blur-xl" />
-      </div>
-    </nav>
+      </nav>
+    </header>
   );
 };
 

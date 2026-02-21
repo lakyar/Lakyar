@@ -14,10 +14,10 @@ const ComingSoon = ({ sectionName = "Projects", progress = "10%" }) => {
         <h2 className="font-heading mb-6 text-5xl font-bold tracking-tight text-slate-900 sm:text-6xl md:text-7xl dark:text-white">
           Coming{" "}
           <span className="relative inline-block">
-            <span className="relative bg-gradient-to-r from-orange-600 to-orange-600 bg-clip-text text-transparent dark:from-orange-400 dark:to-orange-400">
+            <span className="relative bg-linear-to-r from-orange-600 to-orange-600 bg-clip-text text-transparent dark:from-orange-400 dark:to-orange-400">
               Soon
             </span>
-            <span className="absolute -bottom-2 left-0 h-1 w-full animate-pulse bg-gradient-to-r from-orange-500 to-orange-500" />
+            <span className="absolute -bottom-2 left-0 h-1 w-full animate-pulse bg-linear-to-r from-orange-500 to-orange-500" />
           </span>
         </h2>
 
@@ -35,7 +35,7 @@ const ComingSoon = ({ sectionName = "Projects", progress = "10%" }) => {
           </div>
           <div className="h-2 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800">
             <div
-              className="h-full rounded-full bg-gradient-to-r from-orange-500 to-orange-500 transition-all duration-1000"
+              className="h-full rounded-full bg-linear-to-r from-orange-500 to-orange-500 transition-all duration-1000"
               style={{ width: `${progress}` }}
             />
           </div>

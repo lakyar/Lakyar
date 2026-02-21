@@ -102,7 +102,7 @@ const Hero = () => {
 
           {/* Main Headline */}
           <h1 className="font-heading mx-auto text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl md:text-5xl lg:text-6xl dark:text-white">
-            Invictus Lakyar
+            Lakyar Linn
           </h1>
 
           {/* Subheading */}

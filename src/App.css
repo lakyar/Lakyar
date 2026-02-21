@@ -26,6 +26,21 @@
   @apply bg-linear-to-r from-orange-600 to-orange-500 dark:from-orange-500 dark:to-orange-500;
 }
 
+/* Prevent layout shift during page transitions */
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+footer {
+  flex-shrink: 0;
+}
+
 /* ==================== */
 /* CARD UTILITIES */
 /* ==================== */

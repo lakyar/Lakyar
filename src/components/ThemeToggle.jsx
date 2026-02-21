@@ -56,7 +56,6 @@ function ThemeToggle() {
               <div className="h-full w-full rounded-full bg-amber-500" />
             </div>
 
-            {/* Moon Icon - Fixed position */}
             <div
               className={`h-4 w-4 transition-all duration-700 ease-out ${
                 theme === "dark"
@@ -68,7 +67,6 @@ function ThemeToggle() {
             </div>
           </div>
 
-          {/* Sliding Circle - Simple and clean */}
           <div
             className={`absolute top-1 h-6 w-6 rounded-full shadow-md transition-all duration-700 ease-out ${
               theme === "dark"

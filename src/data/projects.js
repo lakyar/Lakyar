@@ -319,7 +319,7 @@ export const projectData = [
     projectSize: "Medium",
     status: "In Development",
     partner: "DigitLab's Own Product",
-    link: null,
+    link: "https://petspademo.netlify.app",
     techStack: "React, Tailwind CSS, Vite, Laravel API, EC2, Docker",
     startDate: "2025-10-10",
     endDate: null,
