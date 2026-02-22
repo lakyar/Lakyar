@@ -1,30 +1,13 @@
 import React, { useRef } from "react";
 import {
   FaReact,
-  FaFigma,
-  FaSitemap,
-  FaUsers,
-  FaComments,
-  FaRocket,
-  FaCode,
   FaPaintBrush,
   FaProjectDiagram,
   FaGlobeAsia,
   FaHandshake,
   FaBookOpen,
-  FaDumbbell,
-  FaMoneyBill,
 } from "react-icons/fa";
-import {
-  SiTailwindcss,
-  SiVite,
-  SiJavascript,
-  SiTypescript,
-  SiRedux,
-  SiAxios,
-  SiFramer,
-  SiNodedotjs,
-} from "react-icons/si";
+
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -124,7 +107,7 @@ const Skills = () => {
               start: "top 90%",
               end: "top 40%",
               scrub: true,
-              toggleActions: "play none none reverse",
+              // toggleActions: "play none none reverse",
             },
           },
         );
@@ -144,11 +127,14 @@ const Skills = () => {
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <div className="mb-12 text-left">
-          <h2 className="text-3xl font-bold text-neutral-900 sm:text-4xl dark:text-white">
-            Technical & <span className="text-orange-500">Professional</span>{" "}
+          <h2 className="font-heading text-3xl font-bold text-neutral-900 sm:text-4xl dark:text-white">
+            Technical &{" "}
+            <span className="text-primary dark:text-primary-dark">
+              Professional
+            </span>{" "}
             Skills
           </h2>
-          <p className="mt-3 max-w-2xl text-neutral-600 dark:text-neutral-400">
+          <p className="mt-4 max-w-2xl text-[13px] tracking-tight sm:text-sm sm:tracking-normal md:mt-6 lg:text-base xl:max-w-4xl dark:text-neutral-300">
             A blend of technical expertise and professional capabilities
           </p>
         </div>
@@ -159,9 +145,9 @@ const Skills = () => {
             <div
               key={skill.id}
               ref={(el) => (cardsRef.current[index] = el)}
-              className="group border-primary/50 dark:border-primary-dark rounded-xl border p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
+              className="group border-primary/50 dark:border-primary-dark rounded-xl border p-3 shadow-sm hover:shadow-md md:p-6"
             >
-              <div className="mb-4 flex items-start justify-between">
+              <div className="mb-2 flex items-start justify-between md:mb-4">
                 <div className="flex items-center gap-3">
                   <div className="relative rounded-lg bg-neutral-100/50 p-2.5 dark:bg-neutral-800/50">
                     <div className="flex h-full w-full items-center justify-center">
@@ -171,20 +157,18 @@ const Skills = () => {
                       {skill.icon}
                     </div>
                   </div>
-                  <h3 className="text-lg font-semibold text-neutral-900 dark:text-white">
+                  <h3 className="text-base font-semibold text-neutral-900 md:text-lg dark:text-white">
                     {skill.title}
                   </h3>
                 </div>
               </div>
 
-              <p className="mb-4 text-sm text-neutral-600 dark:text-neutral-400">
-                {skill.description}
-              </p>
+              <p className="mb-2 text-sm md:mb-4">{skill.description}</p>
 
-              <ul className="mb-5 space-y-2">
+              <ul className="mb-5 space-y-1 sm:space-y-2">
                 {skill.bullets.map((bullet, i) => (
                   <li key={i} className="flex items-start gap-2 text-sm">
-                    <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-orange-500"></span>
+                    <span className="bg-primary dark:bg-primary-dark mt-1.5 h-1 w-1 shrink-0 rounded-full"></span>
                     <span className="text-neutral-700 dark:text-neutral-300">
                       {bullet}
                     </span>

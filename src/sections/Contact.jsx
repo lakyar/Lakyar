@@ -111,13 +111,13 @@ const Contact = () => {
     >
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-16 text-start">
-          <h2 className="font-heading text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl md:text-5xl xl:text-6xl dark:text-white">
+          <h2 className="font-heading text-3xl font-bold text-neutral-900 sm:text-4xl dark:text-white">
             Ready to{" "}
             <span className="bg-linear-to-r from-orange-500 to-amber-500 bg-clip-text text-transparent">
               Collaborate?
             </span>
           </h2>
-          <p className="mt-4 max-w-2xl tracking-tight sm:text-base sm:tracking-normal md:mt-6 md:text-lg xl:max-w-4xl xl:text-xl dark:text-neutral-300">
+          <p className="mt-4 max-w-2xl text-[13px] tracking-tight sm:text-sm sm:tracking-normal md:mt-6 lg:text-base xl:max-w-4xl dark:text-neutral-300">
             Have a project in mind? Let's discuss how we can bring your ideas to
             life with{" "}
             <span className="font-semibold text-[#50a5b8] dark:text-[#77c1d2]">
@@ -132,7 +132,7 @@ const Contact = () => {
         <div className="grid items-start gap-8 md:grid-cols-2">
           <div
             ref={formRef}
-            className="relative rounded-2xl border border-neutral-200 p-3 shadow-xl backdrop-blur-sm md:p-8 lg:p-6 dark:border-neutral-800"
+            className="relative rounded-2xl border border-neutral-200 p-3 shadow-xl md:p-6 dark:border-neutral-800"
           >
             <h3 className="font-heading mb-6 text-2xl font-bold text-neutral-900 dark:text-white">
               Send a Message
@@ -271,16 +271,16 @@ const Contact = () => {
             </form>
           </div>
 
-          <div className="rounded-2xl border border-neutral-200 p-3 shadow-xl backdrop-blur-sm md:p-8 lg:p-6 dark:border-neutral-800">
+          <div className="rounded-2xl border border-neutral-200 p-3 shadow-xl md:p-6 dark:border-neutral-800">
             <h3 className="font-heading mb-6 text-2xl font-bold text-neutral-900 dark:text-white">
               Direct Contact
             </h3>
-            <div className="space-y-4">
+            <div className="space-y-2 md:space-y-4">
               {contactMethods.map((method, index) => (
                 <a
                   href={method.url}
                   key={index}
-                  className="group hover:bg-primary/5 flex cursor-pointer items-center justify-between rounded-xl p-4 transition-all duration-300"
+                  className="group hover:bg-primary/5 flex cursor-pointer items-center justify-between rounded-xl p-2 transition-all duration-300"
                 >
                   <div className="flex items-center gap-4">
                     <div className={`rounded-lg p-1.5 ${method.color}`}>
@@ -290,7 +290,7 @@ const Contact = () => {
                       <div className="font-medium text-neutral-900 dark:text-white">
                         {method.platform}
                       </div>
-                      <div className="text-sm text-neutral-600 duration-300 group-hover:tracking-widest dark:text-neutral-400">
+                      <div className="text-sm text-neutral-600 transition-all duration-300! group-hover:tracking-widest dark:text-neutral-400">
                         {method.value}
                       </div>
                     </div>

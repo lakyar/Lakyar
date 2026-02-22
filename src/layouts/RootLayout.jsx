@@ -1,20 +1,20 @@
 // layouts/RootLayout.jsx
-import React from "react";
+import React, { Suspense } from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import Loading from "../components/Loading";
 import Footer from "../components/Footer";
-import PageTransition from "../components/PageTransition";
 
 const RootLayout = () => {
   return (
-    <div className="flex min-h-screen flex-col backdrop-blur-none">
-      <Navbar />
-      <main className="flex-1">
-        <PageTransition>
+    <div className="grid min-h-dvh grid-rows-[auto_1fr_auto]">
+      <main className="min-h-screen flex-1">
+        <Navbar />
+        <Suspense fallback={<Loading />}>
           <Outlet />
-        </PageTransition>
+          <Footer />
+        </Suspense>
       </main>
-      <Footer />
     </div>
   );
 };

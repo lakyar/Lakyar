@@ -56,11 +56,19 @@ const Projects = () => {
     >
       <div className="mx-auto max-w-7xl">
         <div className="mb-12 text-left">
-          <h2 className="text-3xl font-bold text-neutral-900 sm:text-4xl dark:text-white">
-            Selected <span className="text-orange-500">Work</span>
+          <h2 className="font-heading text-3xl font-bold text-neutral-900 sm:text-4xl dark:text-white">
+            Selected{" "}
+            <span className="text-primary dark:text-primary-dark">Work</span>
           </h2>
-          <p className="mt-3 max-w-2xl text-neutral-600 dark:text-neutral-400">
-            A collection of projects I've built and contributed to.
+          <p className="mt-4 max-w-2xl text-[13px] tracking-tight sm:text-sm sm:tracking-normal md:mt-6 lg:text-base xl:max-w-4xl dark:text-neutral-300">
+            This is a curated collection of projects I have built and
+            contributed to. Most of these projects were developed
+            collaboratively by two developers — my mentor and myself. We work
+            closely on business logic and application flow planning. I lead the
+            UI/UX, frontend implementation, and content structure, while he
+            manages backend architecture and system-level development. If you'd
+            like to learn more about any specific project, feel free to contact
+            me.
           </p>
         </div>
 

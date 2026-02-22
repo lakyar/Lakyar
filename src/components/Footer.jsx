@@ -2,11 +2,11 @@ import React from "react";
 import {
   FaGithub,
   FaLinkedin,
-  FaTwitter,
   FaEnvelope,
-  FaHeart,
   FaCopyright,
   FaTelegram,
+  FaYoutube,
+  FaTwitter,
 } from "react-icons/fa";
 
 const Footer = () => {
@@ -21,12 +21,12 @@ const Footer = () => {
   };
 
   return (
-    <footer className="orange-gradient relative m-4 overflow-hidden rounded-4xl p-8 text-neutral-200 md:m-10 md:p-12 lg:p-16 dark:text-neutral-900">
+    <footer className="m-4 bg-transparent text-neutral-900 md:m-10 xl:m-16 dark:text-neutral-200">
       <div className="relative z-10 mx-auto max-w-7xl">
         {/* Top Section */}
-        <div className="relative grid gap-10 md:grid-cols-[2fr_1fr_1fr]">
+        <div className="relative grid gap-6 md:grid-cols-[2fr_1fr_1fr] md:gap-10">
           {/* Brand Column */}
-          <div className="space-y-4">
+          <div className="space-y-2 md:space-y-4">
             <h3 className="font-heading text-2xl font-bold">Lakyar Linn</h3>
             <p className="text-sm">
               Creating digital experiences that blend creativity with
@@ -35,33 +35,45 @@ const Footer = () => {
             <div className="flex gap-3">
               <a
                 href="mailto:lakyarlinn@gmail.com"
-                className="rounded-lg p-2 transition-all hover:scale-110 hover:bg-white/20"
+                className="hover:orange-gradient rounded-lg p-2 transition-all hover:scale-110"
               >
                 <FaEnvelope className="h-5 w-5" />
               </a>
               <a
                 href="https://t.me/lakyar"
-                className="rounded-lg p-2 transition-all hover:scale-110 hover:bg-white/20"
+                className="hover:orange-gradient rounded-lg p-2 transition-all hover:scale-110"
               >
                 <FaTelegram className="h-5 w-5" />
               </a>
               <a
                 href="https://github.com/lakyar"
-                className="rounded-lg p-2 transition-all hover:scale-110 hover:bg-white/20"
+                className="hover:orange-gradient rounded-lg p-2 transition-all hover:scale-110"
               >
                 <FaGithub className="h-5 w-5" />
               </a>
               <a
                 href="https://www.linkedin.com/in/lakyar"
-                className="rounded-lg p-2 transition-all hover:scale-110 hover:bg-white/20"
+                className="hover:orange-gradient rounded-lg p-2 transition-all hover:scale-110"
               >
                 <FaLinkedin className="h-5 w-5" />
+              </a>
+              <a
+                href="https://www.youtube.com/@lakyarlinn"
+                className="hover:orange-gradient rounded-lg p-2 transition-all hover:scale-110"
+              >
+                <FaYoutube className="h-5 w-5" />
+              </a>
+              <a
+                href="https://x.com/lakyarlinn"
+                className="hover:orange-gradient rounded-lg p-2 transition-all hover:scale-110"
+              >
+                <FaTwitter className="h-5 w-5" />
               </a>
             </div>
           </div>
 
           {/* Quick Links */}
-          <div className="space-y-4">
+          <div className="space-y-2 md:space-y-4">
             <h4 className="font-heading text-lg font-semibold">Quick Links</h4>
             <ul className="space-y-2 text-sm">
               <li>
@@ -108,7 +120,7 @@ const Footer = () => {
           </div>
 
           {/* Skills */}
-          <div className="space-y-4">
+          <div className="space-y-2 md:space-y-4">
             <h4 className="font-heading text-lg font-semibold">Skills</h4>
             <ul className="space-y-2 text-sm">
               {[
@@ -125,12 +137,9 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="my-8 h-1 rounded-full bg-neutral-200 dark:bg-neutral-900"></div>
-
         {/* Bottom Section */}
-        <div className="flex flex-col items-center justify-between gap-4 text-sm md:flex-row">
-          <p className="flex items-center gap-2">
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 text-sm md:flex-row">
+          <p className="flex items-center gap-2 tracking-tighter text-nowrap">
             <FaCopyright /> {currentYear} lakyar. All rights reserved.
           </p>
 

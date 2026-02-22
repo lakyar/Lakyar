@@ -6,35 +6,38 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import NotFound from "./NotFound";
+import Loading from "../components/Loading";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const ProjectDetail = () => {
   const { slug } = useParams();
-
-  // Find the project by slug
-  const project = projectData.find((p) => p.slug === slug);
-
-  if (!project) {
-    return <NotFound title="project" />;
-  }
-
+  const [loading, setLoading] = useState(true);
+  const [project, setProject] = useState(null);
   const [activeImage, setActiveImage] = useState(0);
   const sectionRef = useRef(null);
-  const contentRef = useRef(null);
-  const statsRef = useRef([]);
 
-  const projectDetails = {
+  useEffect(() => {
+    // Simulate data fetching
+    const timer = setTimeout(() => {
+      const found = projectData.find((p) => p.slug === slug);
+      setProject(found);
+      setLoading(false);
+    }, 500); // Small delay to show loading state
+
+    return () => clearTimeout(timer);
+  }, [slug]);
+
+  const projectDetails = project && {
     ...project,
     techStack: project.techStack?.split(", ") || [],
-    images: project.images || [
-      { src: project.cover, name: "Main" },
-      // Add more images if needed
-    ],
+    images: project.images || [{ src: project.cover, name: "Main" }],
   };
 
   useGSAP(
     () => {
+      if (!project || loading) return;
+
       // Animate content sections on scroll
       gsap.utils.toArray(".animate-section").forEach((section) => {
         gsap.fromTo(
@@ -54,13 +57,21 @@ const ProjectDetail = () => {
 
       ScrollTrigger.refresh();
     },
-    { scope: sectionRef },
+    { scope: sectionRef, dependencies: [project, loading] },
   );
+
+  if (loading) {
+    return <Loading />;
+  }
+
+  if (!project) {
+    return <NotFound title="project" />;
+  }
+
   return (
     <div ref={sectionRef} className="min-h-screen">
       {/* Hero Section */}
       <section className="relative h-[60vh] min-h-125 overflow-hidden">
-        {/* Background Image with Overlay */}
         <div className="absolute inset-0">
           <img
             src={project.cover}
@@ -68,10 +79,8 @@ const ProjectDetail = () => {
             className="h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-linear-to-t from-neutral-200 via-neutral-200/60 to-transparent dark:from-neutral-950 dark:via-neutral-900/60" />
-          {/* <div className="absolute inset-0 bg-linear-to-r from-orange-500/20 to-transparent mix-blend-overlay" /> */}
         </div>
 
-        {/* Content */}
         <div className="absolute right-0 bottom-0 left-0 px-4 py-12 sm:px-6 md:py-16 lg:px-8">
           <div className="mx-auto max-w-7xl">
             <div className="flex w-full flex-wrap items-center justify-between gap-x-10">
@@ -84,7 +93,7 @@ const ProjectDetail = () => {
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex min-w-fit items-center gap-2 rounded-lg bg-orange-500 px-6 py-3 text-white transition-all duration-300 hover:bg-orange-600"
+                  className="bg-primary dark:bg-primary-dark inline-flex min-w-fit items-center gap-2 rounded-lg px-6 py-3 text-white transition-all duration-300 hover:bg-orange-600"
                 >
                   <FaLaptop />
                   Live
@@ -97,11 +106,11 @@ const ProjectDetail = () => {
       </section>
 
       {/* Main Content */}
-      <main className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
+      <main className="mx-auto min-h-screen max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
         <div className="animate-section mb-16 grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div className="lg:col-span-2">
             <h2 className="mb-4 flex items-center gap-2 text-2xl font-bold">
-              <span className="h-6 w-1 rounded-full bg-orange-500" />
+              <span className="bg-primary dark:bg-primary-dark h-6 w-1 rounded-full" />
               Project Overview
             </h2>
             <div className="prose prose-neutral dark:prose-invert max-w-none">
@@ -116,16 +125,16 @@ const ProjectDetail = () => {
           </div>
 
           {/* Tech Stack */}
-          <div className="rounded-xl border border-neutral-200 bg-white p-3 md:p-6 dark:border-neutral-800 dark:bg-neutral-900">
+          <div className="rounded-xl border border-neutral-200 p-3 md:p-6 dark:border-neutral-800">
             <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold">
-              <FaCode className="text-orange-500" />
+              <FaCode className="text-primary dark:text-primary-dark" />
               Tech Stack
             </h3>
             <div className="flex flex-wrap gap-2">
               {projectDetails.techStack.map((tech, i) => (
                 <span
                   key={i}
-                  className="rounded-full border border-neutral-200 bg-neutral-100 px-3 py-1 text-sm text-neutral-700 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-300"
+                  className="border-primary dark:border-primary-dark rounded-full border px-3 py-1 text-sm text-neutral-700 dark:text-neutral-300"
                 >
                   {tech}
                 </span>
@@ -156,7 +165,7 @@ const ProjectDetail = () => {
         {/* Gallery */}
         <div className="animate-section mb-16">
           <h2 className="mb-8 flex items-center gap-2 text-2xl font-bold">
-            <span className="h-6 w-1 rounded-full bg-orange-500" />
+            <span className="bg-primary dark:bg-primary-dark h-6 w-1 rounded-full" />
             Project Gallery
           </h2>
           <div className="grid grid-cols-3 gap-4 sm:grid-cols-4 md:grid-cols-5 xl:grid-cols-6">
@@ -166,8 +175,8 @@ const ProjectDetail = () => {
                 onClick={() => setActiveImage(index)}
                 className={`relative aspect-video overflow-hidden rounded-lg border-2 transition-all duration-300 ${
                   activeImage === index
-                    ? "scale-105 border-orange-500 shadow-lg"
-                    : "border-transparent hover:border-orange-500/50"
+                    ? "border-primary dark:border-primary-dark scale-105 shadow-lg"
+                    : "hover:border-primary/50 border-transparent"
                 }`}
               >
                 <img
