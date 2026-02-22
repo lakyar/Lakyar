@@ -1,12 +1,7 @@
 import React from "react";
-import ComingSoon from "../components/ComingSoon";
 
-const Blogs = () => {
-  return (
-    <section id="blogs">
-      <ComingSoon sectionName="Blogs" progress="6%" />
-    </section>
-  );
+const blogs = () => {
+  return <div>blogs</div>;
 };
 
-export default Blogs;
+export default blogs;

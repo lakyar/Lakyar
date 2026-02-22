@@ -5,16 +5,12 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { Link } from "react-router-dom";
+import ImageWithSkeleton from "../components/ImageWithSkeleton";
 
 const Projects = () => {
   const [shuffledProjects] = useState(() =>
     [...projectData].sort(() => Math.random() - 0.5),
   );
-
-  // Generate random scale
-  const getRandomScale = () => {
-    return (0.8 + Math.random() * 0.6).toFixed(2);
-  };
 
   const sectionRef = useRef(null);
   const cardsRef = useRef([]);
@@ -74,8 +70,6 @@ const Projects = () => {
 
         <div className="flex flex-wrap justify-around gap-6 gap-y-4 md:gap-y-8">
           {shuffledProjects.map((project, index) => {
-            const scale = getRandomScale();
-
             return (
               <Link
                 to={`/project/${project.slug}`}
@@ -84,14 +78,10 @@ const Projects = () => {
                 className="project-card group relative w-[80%] rounded-lg sm:w-[45%] lg:w-[30%]"
               >
                 <div className="w-full p-4 md:p-10">
-                  <img
+                  <ImageWithSkeleton
                     src={project.cover}
                     alt={project.title}
-                    className="transition-transform duration-500 group-hover:scale-105 hover:z-20"
-                    style={{
-                      transform: `scale(${scale})`,
-                    }}
-                    loading="lazy"
+                    className="h-full w-full object-cover"
                   />
                   <div className="absolute top-0 md:top-4">
                     <h3 className="text-primary font-heading dark:text-primary-dark hidden text-xs font-bold duration-300 text-shadow-sm group-hover:scale-110 md:block md:text-sm lg:text-base">

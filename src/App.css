@@ -27,20 +27,11 @@
 }
 
 /* Prevent layout shift during page transitions */
-#root {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+@keyframes shimmer {
+  100% {
+    transform: translateX(200%);
+  }
 }
-
-main {
-  flex: 1 0 auto;
-}
-
-footer {
-  flex-shrink: 0;
-}
-
 /* ==================== */
 /* CARD UTILITIES */
 /* ==================== */

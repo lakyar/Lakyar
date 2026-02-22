@@ -7,6 +7,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import NotFound from "./NotFound";
 import Loading from "../components/Loading";
+import ImageWithSkeleton from "../components/ImageWithSkeleton";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,14 +19,9 @@ const ProjectDetail = () => {
   const sectionRef = useRef(null);
 
   useEffect(() => {
-    // Simulate data fetching
-    const timer = setTimeout(() => {
-      const found = projectData.find((p) => p.slug === slug);
-      setProject(found);
-      setLoading(false);
-    }, 500); // Small delay to show loading state
-
-    return () => clearTimeout(timer);
+    const found = projectData.find((p) => p.slug === slug);
+    setProject(found);
+    setLoading(false);
   }, [slug]);
 
   const projectDetails = project && {
@@ -73,7 +69,7 @@ const ProjectDetail = () => {
       {/* Hero Section */}
       <section className="relative h-[60vh] min-h-125 overflow-hidden">
         <div className="absolute inset-0">
-          <img
+          <ImageWithSkeleton
             src={project.cover}
             alt={project.title}
             className="h-full w-full object-cover"
@@ -168,6 +164,7 @@ const ProjectDetail = () => {
             <span className="bg-primary dark:bg-primary-dark h-6 w-1 rounded-full" />
             Project Gallery
           </h2>
+          {/* Gallery images */}
           <div className="grid grid-cols-3 gap-4 sm:grid-cols-4 md:grid-cols-5 xl:grid-cols-6">
             {projectDetails.images.map((image, index) => (
               <button
@@ -179,7 +176,7 @@ const ProjectDetail = () => {
                     : "hover:border-primary/50 border-transparent"
                 }`}
               >
-                <img
+                <ImageWithSkeleton
                   src={image.src}
                   alt={image.name}
                   className="h-full w-full object-cover"
@@ -190,7 +187,7 @@ const ProjectDetail = () => {
 
           {/* Active Image Preview */}
           <div className="mx-auto mt-6 aspect-video max-w-3xl overflow-hidden rounded-xl">
-            <img
+            <ImageWithSkeleton
               src={projectDetails.images[activeImage].src}
               alt={projectDetails.images[activeImage].name}
               className="h-full w-full object-cover"
