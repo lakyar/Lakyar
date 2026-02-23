@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   FaGithub,
   FaLinkedin,
@@ -11,12 +12,36 @@ import {
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHomePage = location.pathname === "/";
 
-  const scrollToSection = (e, sectionId) => {
+  // Handle hash scrolling when page loads with hash
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace("#", "");
+      const element = document.getElementById(id);
+      if (element) {
+        // Small delay to ensure DOM is ready
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
+    }
+  }, [location]);
+
+  const handleNavigation = (e, sectionId) => {
     e.preventDefault();
-    const element = document.querySelector(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+
+    if (isHomePage) {
+      // On homepage - scroll to section directly
+      const element = document.querySelector(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // Not on homepage - navigate to home with hash
+      navigate(`/${sectionId}`);
     }
   };
 
@@ -78,41 +103,51 @@ const Footer = () => {
             <ul className="space-y-2 text-sm">
               <li>
                 <a
-                  href="#home"
-                  onClick={(e) => scrollToSection(e, "#home")}
-                  className="group flex items-center gap-2 transition-colors"
+                  href="/#home"
+                  onClick={(e) => handleNavigation(e, "#home")}
+                  className="group flex items-center gap-2 transition-colors hover:text-orange-500"
                 >
-                  <span className="size-0 rounded-full bg-neutral-900 transition-all group-hover:size-1.5"></span>
+                  <span className="size-0 rounded-full bg-neutral-900 transition-all group-hover:size-1.5 dark:bg-white" />
                   Home
                 </a>
               </li>
               <li>
                 <a
-                  href="#skills"
-                  onClick={(e) => scrollToSection(e, "#skills")}
-                  className="group flex items-center gap-2 transition-colors"
+                  href="/#skills"
+                  onClick={(e) => handleNavigation(e, "#skills")}
+                  className="group flex items-center gap-2 transition-colors hover:text-orange-500"
                 >
-                  <span className="size-0 rounded-full bg-neutral-900 transition-all group-hover:size-1.5"></span>
+                  <span className="size-0 rounded-full bg-neutral-900 transition-all group-hover:size-1.5 dark:bg-white" />
                   Skills
                 </a>
               </li>
               <li>
                 <a
-                  href="#projects"
-                  onClick={(e) => scrollToSection(e, "#projects")}
-                  className="group flex items-center gap-2 transition-colors"
+                  href="/#projects"
+                  onClick={(e) => handleNavigation(e, "#projects")}
+                  className="group flex items-center gap-2 transition-colors hover:text-orange-500"
                 >
-                  <span className="size-0 rounded-full bg-neutral-900 transition-all group-hover:size-1.5"></span>
+                  <span className="size-0 rounded-full bg-neutral-900 transition-all group-hover:size-1.5 dark:bg-white" />
                   Projects
                 </a>
               </li>
               <li>
                 <a
-                  href="#contact"
-                  onClick={(e) => scrollToSection(e, "#contact")}
-                  className="group flex items-center gap-2 transition-colors"
+                  href="/#blogs"
+                  onClick={(e) => handleNavigation(e, "#blogs")}
+                  className="group flex items-center gap-2 transition-colors hover:text-orange-500"
                 >
-                  <span className="size-0 rounded-full bg-neutral-900 transition-all group-hover:size-1.5"></span>
+                  <span className="size-0 rounded-full bg-neutral-900 transition-all group-hover:size-1.5 dark:bg-white" />
+                  Blogs
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/#contact"
+                  onClick={(e) => handleNavigation(e, "#contact")}
+                  className="group flex items-center gap-2 transition-colors hover:text-orange-500"
+                >
+                  <span className="size-0 rounded-full bg-neutral-900 transition-all group-hover:size-1.5 dark:bg-white" />
                   Contact
                 </a>
               </li>
@@ -138,7 +173,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom Section */}
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 text-sm md:flex-row">
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 text-sm opacity-75 md:flex-row">
           <p className="flex items-center gap-2 tracking-tighter text-nowrap">
             <FaCopyright /> {currentYear} lakyar. All rights reserved.
           </p>

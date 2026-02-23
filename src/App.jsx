@@ -16,6 +16,7 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const Home = lazy(() => import("./pages/Home"));
 const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
+const BlogDetail = lazy(() => import("./pages/BlogDetail"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const AppContent = () => {
@@ -66,6 +67,7 @@ const AppContent = () => {
         <Route path="/" element={<RootLayout />}>
           <Route index element={<Home />} />
           <Route path="project/:slug" element={<ProjectDetail />} />
+          <Route path="blog/:slug" element={<BlogDetail />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

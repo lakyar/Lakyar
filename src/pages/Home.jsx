@@ -3,7 +3,7 @@ import Hero from "../sections/Hero";
 import Skills from "../sections/Skills";
 import Projects from "../sections/Projects";
 import Contact from "../sections/Contact";
-// import Blogs from "../sections/Blogs";
+import Blogs from "../sections/Blogs";
 
 const Home = () => {
   return (
@@ -11,7 +11,7 @@ const Home = () => {
       <Hero />
       <Skills />
       <Projects />
-      {/* <Blogs /> */}
+      <Blogs />
       <Contact />
     </section>
   );

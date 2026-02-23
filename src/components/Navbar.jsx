@@ -70,26 +70,26 @@ const Navbar = () => {
         </svg>
       ),
     },
-    // {
-    //   id: "blogs",
-    //   label: "blogs",
-    //   href: "/#blogs",
-    //   icon: (
-    //     <svg
-    //       className="h-5 w-5"
-    //       fill="none"
-    //       viewBox="0 0 24 24"
-    //       stroke="currentColor"
-    //     >
-    //       <path
-    //         strokeLinecap="round"
-    //         strokeLinejoin="round"
-    //         strokeWidth={1.5}
-    //         d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z"
-    //       />
-    //     </svg>
-    //   ),
-    // },
+    {
+      id: "blogs",
+      label: "blogs",
+      href: "/#blogs",
+      icon: (
+        <svg
+          className="h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={1.5}
+            d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z"
+          />
+        </svg>
+      ),
+    },
     {
       id: "contact",
       label: "Contact",
@@ -175,8 +175,12 @@ const Navbar = () => {
     <header>
       <nav className="fixed top-4 left-1/2 z-50 w-full max-w-2xl -translate-x-1/2 px-4">
         <div
-          className={`relative mx-auto flex items-center justify-between rounded-full bg-transparent px-5 py-2 backdrop-blur-sm transition-all duration-500 ${
+          className={`md:px5 relative mx-auto flex items-center justify-between rounded-full px-3 py-2 backdrop-blur-sm transition-all duration-500 ${
             scrolled ? "scale-95 border shadow-lg md:shadow-xl" : ""
+          } ${
+            !isHomePage && !scrolled
+              ? "bg-linear-to-r from-neutral-100/25 to-neutral-100/0 dark:from-neutral-900/25 dark:to-neutral-900/0"
+              : "bg-transparent"
           } border-white/20 dark:border-neutral-700/50`}
         >
           {/* Navigation Links - Conditional */}
