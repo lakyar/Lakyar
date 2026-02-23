@@ -12,7 +12,7 @@ const Hero = () => {
     projects: 20,
     years: 2,
     satisfaction: 100,
-    coffeeCups: 9999,
+    coffeeCups: 999,
   };
 
   const duration = 1500;
@@ -106,8 +106,7 @@ const Hero = () => {
           </h1>
 
           {/* Subheading */}
-
-          <p className="mx-auto mt-4 mb-2 max-w-xl font-thin tracking-tighter text-nowrap sm:text-base sm:tracking-normal md:mt-6 md:text-lg xl:max-w-3xl xl:text-xl">
+          <p className="mx-auto mt-4 mb-2 max-w-xl tracking-tighter text-nowrap sm:text-base sm:tracking-normal md:mt-6 md:text-lg xl:max-w-3xl xl:text-xl">
             Freelance Developer · Co-Founder at{" "}
             <a
               href="https://digitlab.cc"
@@ -116,7 +115,7 @@ const Hero = () => {
               DigitLab
             </a>
           </p>
-          <p className="mx-auto max-w-xl tracking-tighter sm:text-base sm:tracking-normal md:text-lg xl:max-w-3xl xl:text-xl dark:text-neutral-300">
+          <p className="mx-auto max-w-xl tracking-tighter sm:text-base sm:tracking-normal md:text-lg xl:max-w-3xl xl:text-xl">
             I focus on building modern, high-performance apps with{" "}
             <span className="font-semibold text-[#50a5b8] dark:text-[#77c1d2]">
               Alpine
@@ -212,7 +211,7 @@ const Hero = () => {
               },
             ].map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="text-2xl font-bold text-neutral-900 md:text-3xl dark:text-white">
+                <div className="text-2xl font-bold text-neutral-900 opacity-75 md:text-3xl dark:text-white">
                   {stat.value}
                 </div>
                 <div className="leading-widest font-SG mt-2 text-xs tracking-tight text-neutral-600 sm:text-sm xl:text-base dark:text-neutral-400">

@@ -6,13 +6,13 @@ import {
   useLocation,
 } from "react-router-dom";
 import { gsap } from "gsap";
-import { ScrollTrigger, SplitText } from "gsap/all";
+import { ScrollTrigger } from "gsap/all";
 import Lenis from "lenis";
 
 import RootLayout from "./layouts/RootLayout";
 import Loading from "./components/Loading";
 
-gsap.registerPlugin(ScrollTrigger, SplitText);
+gsap.registerPlugin(ScrollTrigger);
 
 const Home = lazy(() => import("./pages/Home"));
 const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));

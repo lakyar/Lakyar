@@ -56,7 +56,7 @@ const Projects = () => {
             Selected{" "}
             <span className="text-primary dark:text-primary-dark">Work</span>
           </h2>
-          <p className="mt-4 max-w-2xl text-[13px] tracking-tight sm:text-sm sm:tracking-normal md:mt-6 lg:text-base xl:max-w-4xl dark:text-neutral-300">
+          <p className="mt-4 max-w-3xl text-[13px] tracking-tight sm:text-sm sm:tracking-normal md:mt-6 lg:text-base xl:max-w-5xl dark:text-neutral-300">
             This is a curated collection of projects I have built and
             contributed to. Most of these projects were developed
             collaboratively by two developers — my mentor and myself. We work

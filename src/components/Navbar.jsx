@@ -290,7 +290,7 @@ const Navbar = () => {
             <ThemeToggle />
           </div>
 
-          <div className="absolute inset-0 -z-10 rounded-full bg-linear-to-r from-orange-500/5 to-orange-500/1 blur-xl" />
+          {/* <div className="absolute inset-0 -z-10 rounded-full bg-linear-to-r from-orange-500/5 to-orange-500/1 blur-xl" /> */}
         </div>
       </nav>
     </header>

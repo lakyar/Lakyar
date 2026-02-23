@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 
 import emailjs from "@emailjs/browser";
 
@@ -40,7 +40,9 @@ const Contact = () => {
       value: "@lakyar",
       icon: (
         <svg className="size-8" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.57-1.38-.93-2.23-1.5-.98-.65-.34-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.06-.2-.07-.06-.17-.04-.24-.02-.1.02-1.74 1.1-4.92 3.24-.46.33-.88.49-1.26.48-.41-.01-1.21-.23-1.8-.42-.72-.23-1.29-.36-1.24-.76.03-.24.27-.49.75-.76 2.87-1.25 4.79-2.08 5.74-2.49 2.7-1.18 3.26-1.39 3.63-1.39.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0z" />
+          <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.17-.03-.24-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.08-.03.24-.06.41z" />
+          </svg>{" "}
         </svg>
       ),
       color:
@@ -107,9 +109,9 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="relative min-h-screen overflow-hidden py-20"
+      className="min-h-screen w-full px-4 py-20 sm:px-6 lg:px-8"
     >
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl">
         <div className="mb-16 text-start">
           <h2 className="font-heading text-3xl font-bold text-neutral-900 sm:text-4xl dark:text-white">
             Ready to{" "}
@@ -117,7 +119,8 @@ const Contact = () => {
               Collaborate?
             </span>
           </h2>
-          <p className="mt-4 max-w-2xl text-[13px] tracking-tight sm:text-sm sm:tracking-normal md:mt-6 lg:text-base xl:max-w-4xl dark:text-neutral-300">
+
+          <p className="mt-4 max-w-3xl text-[13px] tracking-tight sm:text-sm sm:tracking-normal md:mt-6 lg:text-base xl:max-w-5xl dark:text-neutral-300">
             Have a project in mind? Let's discuss how we can bring your ideas to
             life with{" "}
             <span className="font-semibold text-[#50a5b8] dark:text-[#77c1d2]">

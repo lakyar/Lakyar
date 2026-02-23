@@ -105,9 +105,9 @@ const Footer = () => {
                 <a
                   href="/#home"
                   onClick={(e) => handleNavigation(e, "#home")}
-                  className="group flex items-center gap-2 transition-colors hover:text-orange-500"
+                  className="group hover:text-primary dark:hover:text-primary-dark flex items-center gap-2 transition-colors"
                 >
-                  <span className="size-0 rounded-full bg-neutral-900 transition-all group-hover:size-1.5 dark:bg-white" />
+                  <span className="bg-primary dark:bg-primary-dark size-0 rounded-full transition-all group-hover:size-1.5" />
                   Home
                 </a>
               </li>
@@ -115,9 +115,9 @@ const Footer = () => {
                 <a
                   href="/#skills"
                   onClick={(e) => handleNavigation(e, "#skills")}
-                  className="group flex items-center gap-2 transition-colors hover:text-orange-500"
+                  className="group hover:text-primary dark:hover:text-primary-dark flex items-center gap-2 transition-colors"
                 >
-                  <span className="size-0 rounded-full bg-neutral-900 transition-all group-hover:size-1.5 dark:bg-white" />
+                  <span className="bg-primary dark:bg-primary-dark size-0 rounded-full transition-all group-hover:size-1.5" />
                   Skills
                 </a>
               </li>
@@ -125,9 +125,9 @@ const Footer = () => {
                 <a
                   href="/#projects"
                   onClick={(e) => handleNavigation(e, "#projects")}
-                  className="group flex items-center gap-2 transition-colors hover:text-orange-500"
+                  className="group hover:text-primary dark:hover:text-primary-dark flex items-center gap-2 transition-colors"
                 >
-                  <span className="size-0 rounded-full bg-neutral-900 transition-all group-hover:size-1.5 dark:bg-white" />
+                  <span className="bg-primary dark:bg-primary-dark size-0 rounded-full transition-all group-hover:size-1.5" />
                   Projects
                 </a>
               </li>
@@ -135,9 +135,9 @@ const Footer = () => {
                 <a
                   href="/#blogs"
                   onClick={(e) => handleNavigation(e, "#blogs")}
-                  className="group flex items-center gap-2 transition-colors hover:text-orange-500"
+                  className="group hover:text-primary dark:hover:text-primary-dark flex items-center gap-2 transition-colors"
                 >
-                  <span className="size-0 rounded-full bg-neutral-900 transition-all group-hover:size-1.5 dark:bg-white" />
+                  <span className="bg-primary dark:bg-primary-dark size-0 rounded-full transition-all group-hover:size-1.5" />
                   Blogs
                 </a>
               </li>
@@ -145,9 +145,9 @@ const Footer = () => {
                 <a
                   href="/#contact"
                   onClick={(e) => handleNavigation(e, "#contact")}
-                  className="group flex items-center gap-2 transition-colors hover:text-orange-500"
+                  className="group hover:text-primary dark:hover:text-primary-dark flex items-center gap-2 transition-colors"
                 >
-                  <span className="size-0 rounded-full bg-neutral-900 transition-all group-hover:size-1.5 dark:bg-white" />
+                  <span className="bg-primary dark:bg-primary-dark size-0 rounded-full transition-all group-hover:size-1.5" />
                   Contact
                 </a>
               </li>

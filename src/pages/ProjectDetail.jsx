@@ -65,7 +65,7 @@ const ProjectDetail = () => {
   }
 
   return (
-    <div ref={sectionRef} className="min-h-screen">
+    <section ref={sectionRef} className="min-h-screen">
       {/* Hero Section */}
       <section className="relative h-[60vh] min-h-125 overflow-hidden">
         <div className="absolute inset-0">
@@ -195,7 +195,7 @@ const ProjectDetail = () => {
           </div>
         </div>
       </main>
-    </div>
+    </section>
   );
 };
 

@@ -21,13 +21,19 @@ const Blogs = () => {
   const showAll = () => setVisibleCount(sortedBlogs.length);
 
   return (
-    <section id="blogs" className="w-full px-4 py-20 sm:px-6 lg:px-8">
+    <section
+      id="blogs"
+      className="min-h-screen w-full px-4 py-20 sm:px-6 lg:px-8"
+    >
       <div className="mx-auto max-w-7xl">
         <div className="mb-12 text-left">
           <h2 className="font-heading text-3xl font-bold text-neutral-900 sm:text-4xl dark:text-white">
-            Lakyar's <span className="text-orange-500">Blog Posts</span>
+            Lakyar's{" "}
+            <span className="text-primary dark:text-primary-dark">
+              Blog Posts
+            </span>
           </h2>
-          <p className="mt-4 max-w-2xl text-neutral-600 dark:text-neutral-400">
+          <p className="mt-4 max-w-3xl text-[13px] tracking-tight sm:text-sm sm:tracking-normal md:mt-6 lg:text-base xl:max-w-5xl dark:text-neutral-300">
             I'll be writing about whatever catches my interest — tech, web dev,
             books I'm reading, or just random thoughts. Basically a digital
             garden of things I find cool.
@@ -35,7 +41,7 @@ const Blogs = () => {
         </div>
 
         {/* Blog Grid */}
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-4">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-2">
           {sortedBlogs.slice(0, visibleCount).map((blog, index) => (
             <Link
               to={`/blog/${blog.slug}`}
@@ -69,18 +75,18 @@ const Blogs = () => {
               </div>
 
               <div className="p-3 md:p-5">
-                <h3 className="mb-2 line-clamp-2 text-base text-neutral-900 transition-colors group-hover:text-orange-500 sm:font-semibold md:text-lg dark:text-white">
+                <h3 className="group-hover:text-primary dark:group-hover:text-primary-dark mb-2 line-clamp-2 text-base font-semibold text-neutral-900 transition-colors sm:font-semibold md:text-lg dark:text-white">
                   {blog.title}
                 </h3>
 
-                <p className="mb-4 line-clamp-2 text-sm text-neutral-600 dark:text-neutral-400">
+                <p className="mb-2 line-clamp-2 text-xs text-neutral-600 md:mb-4 md:text-sm dark:text-neutral-400">
                   {blog.excerpt}
                 </p>
 
                 {/* Meta Info */}
                 <div className="flex flex-wrap items-center gap-3 text-xs text-neutral-500 dark:text-neutral-500">
                   <span className="flex items-center gap-2">
-                    <FaCalendar className="text-orange-500" />
+                    <FaCalendar className="text-primary dark:text-primary-dark" />
                     {new Date(blog.date).toLocaleDateString("en-US", {
                       month: "short",
                       day: "numeric",
@@ -88,7 +94,7 @@ const Blogs = () => {
                     })}
                   </span>
                   <span className="flex items-center gap-2">
-                    <FaClock className="text-orange-500" />
+                    <FaClock className="text-primary dark:text-primary-dark" />
                     {blog.readTime} min read
                   </span>
                   {/* <span className="flex items-center gap-1">
@@ -105,7 +111,7 @@ const Blogs = () => {
           <div className="mt-12 flex justify-center gap-4">
             <button
               onClick={showMore}
-              className="group relative overflow-hidden rounded-full bg-orange-500 px-8 py-1.5 font-medium text-white transition-all duration-300 hover:bg-orange-600 hover:shadow-lg hover:shadow-orange-500/25 md:py-2"
+              className="group bg-primary dark:bg-primary-dark relative overflow-hidden rounded-full px-8 py-1.5 font-medium text-white transition-all duration-300 hover:bg-orange-600 hover:shadow-lg hover:shadow-orange-500/25 md:py-2"
             >
               <span className="relative z-10 flex items-center gap-2">
                 Load More

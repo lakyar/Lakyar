@@ -21,7 +21,7 @@ const skillCategories = [
     icon: <FaReact className="text-2xl text-blue-400" />,
     description: "Building responsive, performant user interfaces",
     bullets: [
-      "React, Vite, Tailwind CSS",
+      "JS, Alpine,  React, React Native, Vite, Tailwind",
       "Component architecture & reusable systems",
       "API integration & state management",
       "Performance optimization",
@@ -134,7 +134,7 @@ const Skills = () => {
             </span>{" "}
             Skills
           </h2>
-          <p className="mt-4 max-w-2xl text-[13px] tracking-tight sm:text-sm sm:tracking-normal md:mt-6 lg:text-base xl:max-w-4xl dark:text-neutral-300">
+          <p className="mt-4 max-w-3xl text-[13px] tracking-tight sm:text-sm sm:tracking-normal md:mt-6 lg:text-base xl:max-w-5xl dark:text-neutral-300">
             A blend of technical expertise and professional capabilities
           </p>
         </div>
