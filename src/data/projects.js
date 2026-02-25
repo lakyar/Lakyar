@@ -469,4 +469,26 @@ export const projectData = [
       },
     ],
   },
+  {
+    id: 12,
+    title: "Oni-Chan Anime MM - Anime Platform",
+    slug: "oni-chan",
+    description: "N/A",
+    cover: "https://i.ibb.co/9HG09v36/pj-onc.png",
+    industry: "Media & Entertainment / Streaming Platform",
+    duration: "TBA",
+    projectSize: "Standard",
+    status: "Ongoing",
+    partner: "Oni-Chan Anime MM",
+    link: "https://onichananimemm.com",
+    techStack: "TALL Stack, Filament Admin, Docker Swarm, EC2, Jenkins,",
+    startDate: "2026-2-11",
+    endDate: "-",
+    images: [
+      {
+        src: "https://i.ibb.co/9HG09v36/pj-onc.png",
+        name: "Oni-Chan Home Ui",
+      },
+    ],
+  },
 ];

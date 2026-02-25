@@ -147,7 +147,9 @@ const ProjectDetail = () => {
                 </div>
                 <div className="flex items-start justify-between gap-x-4 text-sm">
                   <span className="text-neutral-500">Year</span>
-                  <span className="">{project.year || "2024"}</span>
+                  <span className="">
+                    {project.startDate.split("-")[0] || "N/A"}
+                  </span>
                 </div>
                 <div className="flex items-start justify-between gap-x-4 text-end text-sm">
                   <span className="text-neutral-500">Category</span>
