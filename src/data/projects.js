@@ -474,7 +474,7 @@ export const projectData = [
     title: "Oni-Chan Anime MM - Anime Platform",
     slug: "oni-chan",
     description: "N/A",
-    cover: "https://i.ibb.co/9HG09v36/pj-onc.png",
+    cover: "https://i.ibb.co/HfSgkTDN/pj-onc.png",
     industry: "Media & Entertainment / Streaming Platform",
     duration: "TBA",
     projectSize: "Standard",
@@ -486,7 +486,7 @@ export const projectData = [
     endDate: "-",
     images: [
       {
-        src: "https://i.ibb.co/9HG09v36/pj-onc.png",
+        src: "https://i.ibb.co/rRQTLYcq/pj-onc1.png",
         name: "Oni-Chan Home Ui",
       },
     ],

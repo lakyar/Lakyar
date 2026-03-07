@@ -11,7 +11,7 @@ const Hero = () => {
   const targetCounts = {
     projects: 20,
     years: 2,
-    satisfaction: 100,
+    satisfaction: 99,
     coffeeCups: 999,
   };
 
