@@ -183,7 +183,7 @@ export const blogData = [
         text: "I completed this website and wrote this blog post on the evening of February 23, 2026. This project reinforced the importance of production testing, controlled animation usage, and understanding deployment workflows. The portfolio represents my current level and will continue evolving as I improve.",
       },
     ],
-    tags: ["React", "Vite", "Tailwind", "GSAP", "Portfolio"],
+    tags: ["React", "Vite", "Tailwind", "GSAP", "Vercel", "Portfolio"],
     author: {
       name: "Lakyar",
       avatar: "/images/avatar.jpg",

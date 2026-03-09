@@ -4,6 +4,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 @theme {
   --font-sans: "Manrope", system-ui, sans-serif;
+  --font-sign: "Mrs Saint Delafield", cursive;
   --color-primary: #f54900;
   --color-primary-dark: #ff8704;
   --color-secondary: #8b5cf6; /* Violet-500 */

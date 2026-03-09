@@ -4,9 +4,7 @@ function ThemeToggle() {
   const [theme, setTheme] = useState(() => {
     const saved = localStorage.getItem("theme");
     if (saved === "dark" || saved === "light") return saved;
-    return window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light";
+    return "dark";
   });
 
   const [isHover, setIsHover] = useState(false);
@@ -32,7 +30,7 @@ function ThemeToggle() {
       >
         {/* Main container - sleek pill shape */}
         <div
-          className={`relative h-8 w-16 overflow-hidden rounded-full border border-neutral-300/50 bg-linear-to-r from-neutral-200 to-neutral-300 shadow-sm transition-all duration-500 ease-out dark:border-neutral-700/50 dark:from-neutral-800 dark:to-neutral-900 ${isHover ? "scale-105" : "scale-100"} `}
+          className={`relative h-8 w-16 overflow-hidden rounded-full border border-neutral-300/50 bg-linear-to-r from-neutral-200 to-neutral-300 transition-all duration-500 ease-out dark:border-neutral-700/50 dark:from-neutral-800 dark:to-neutral-900 ${isHover ? "scale-105" : "scale-100"} `}
         >
           {/* Animated gradient overlay */}
           <div
@@ -68,18 +66,18 @@ function ThemeToggle() {
           </div>
 
           <div
-            className={`absolute top-1 h-6 w-6 rounded-full shadow-md transition-all duration-700 ease-out ${
+            className={`absolute top-1 h-5 w-5 rounded-full shadow-md transition-all duration-700 ease-out ${
               theme === "dark"
-                ? "left-8 bg-linear-to-br from-neutral-300 to-neutral-100"
+                ? "left-9 bg-linear-to-br from-neutral-300 to-neutral-100"
                 : "left-1 bg-linear-to-br from-orange-500 to-orange-400"
             } flex items-center justify-center`}
           >
             {/* Inner dot */}
-            <div
+            {/* <div
               className={`h-1.5 w-1.5 rounded-full transition-all duration-500 ${
                 theme === "dark" ? "bg-neutral-500" : "bg-orange-600"
               } `}
-            />
+            /> */}
           </div>
         </div>
       </button>

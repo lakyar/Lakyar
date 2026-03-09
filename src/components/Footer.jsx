@@ -8,6 +8,7 @@ import {
   FaTelegram,
   FaYoutube,
   FaTwitter,
+  FaBriefcase,
 } from "react-icons/fa";
 
 const Footer = () => {
@@ -81,6 +82,12 @@ const Footer = () => {
                 className="hover:orange-gradient rounded-lg p-2 transition-all hover:scale-110"
               >
                 <FaLinkedin className="h-5 w-5" />
+              </a>
+              <a
+                href="https://digitlab.cc"
+                className="hover:orange-gradient rounded-lg p-2 transition-all hover:scale-110"
+              >
+                <FaBriefcase className="h-5 w-5" />
               </a>
               <a
                 href="https://www.youtube.com/@lakyarlinn"

@@ -68,7 +68,7 @@ const Projects = () => {
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-around gap-6 gap-y-4 md:gap-y-8">
+        <div className="gaP-2 flex flex-wrap justify-around">
           {shuffledProjects.map((project, index) => {
             return (
               <Link
@@ -88,7 +88,7 @@ const Projects = () => {
                       {project.title}
                     </h3>
                     <p
-                      className={`font-heading mt-4 w-fit -translate-x-3 -rotate-z-12 rounded-lg border px-1 py-0.5 text-xs text-neutral-900 backdrop-blur-lg transition-all duration-300 group-hover:-translate-x-12 group-hover:-rotate-z-90 group-hover:opacity-60 md:-translate-x-8 md:px-2 md:text-sm lg:text-base dark:text-white ${
+                      className={`font-heading mt-4 w-fit -translate-x-3 -rotate-z-12 rounded-md border px-1 py-0.5 text-xs text-neutral-900 backdrop-blur-lg transition-all duration-300 group-hover:-translate-x-12 group-hover:-rotate-z-90 group-hover:opacity-60 md:-translate-x-8 md:px-2 md:text-sm lg:text-base dark:text-white ${
                         project.startDate.split("-")[0] === "2025"
                           ? "bg-primary/50 border-primary"
                           : project.startDate.split("-")[0] === "2026"
@@ -103,7 +103,7 @@ const Projects = () => {
                   <h3 className="text-primary font-heading dark:text-primary-dark relative z-10 mb-2 scale-125 text-xs font-bold duration-300 text-shadow-sm group-hover:scale-110 md:hidden">
                     {project.title}
                   </h3>
-                  <h3 className="description-text line-clamp-2! hidden text-[10px] font-thin tracking-widest group-hover:opacity-30 md:line-clamp-3! md:block md:opacity-75 lg:text-xs">
+                  <h3 className="description-text line-clamp-2! hidden text-[10px] font-thin tracking-widest duration-300 group-hover:opacity-30 md:line-clamp-3! md:block md:opacity-75 lg:text-xs">
                     {project.description}
                   </h3>
                 </div>

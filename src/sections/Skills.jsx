@@ -145,7 +145,7 @@ const Skills = () => {
             <div
               key={skill.id}
               ref={(el) => (cardsRef.current[index] = el)}
-              className="group border-primary/50 dark:border-primary-dark rounded-xl border p-3 shadow-sm hover:shadow-md md:p-6"
+              className="group border-primary/50 dark:border-primary-dark rounded-md rounded-bl-2xl border p-3 shadow-sm hover:shadow-md md:p-6"
             >
               <div className="mb-2 flex items-start justify-between md:mb-4">
                 <div className="flex items-center gap-3">
