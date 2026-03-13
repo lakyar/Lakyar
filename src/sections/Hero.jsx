@@ -360,7 +360,7 @@ const Hero = () => {
                 <div className="text-2xl font-bold text-neutral-900 opacity-75 md:text-3xl dark:text-white">
                   {stat.value}
                 </div>
-                <div className="leading-widest font-SG mt-2 text-sm tracking-tight text-neutral-600 backdrop-blur-xs xl:text-base dark:text-neutral-400">
+                <div className="leading-widest font-SG mt-2 text-sm tracking-tight text-neutral-800 text-shadow-black/50 text-shadow-xs xl:text-base dark:text-neutral-300 dark:text-shadow-black">
                   {stat.label}
                 </div>
               </div>
