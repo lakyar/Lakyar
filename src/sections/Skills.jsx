@@ -19,71 +19,48 @@ const skillCategories = [
     id: 1,
     title: "Frontend Engineering",
     icon: <FaReact className="text-2xl text-blue-400" />,
-    description: "Building responsive, performant user interfaces",
+    description: "Building modern, performant web interfaces",
     bullets: [
-      "JS, Alpine,  React, React Native, Vite, Tailwind",
-      "Component architecture & reusable systems",
-      "API integration & state management",
-      "Performance optimization",
+      "JS, React, React Native, Alpine",
+      "Component archi & reusable UI systems",
+      "API integration, async workflows & state handling",
+      "Performance optimization & clean code practices",
     ],
   },
   {
     id: 2,
     title: "UI / UX Design",
     icon: <FaPaintBrush className="text-2xl text-pink-400" />,
-    description: "Creating intuitive, accessible user experiences",
+    description: "Designing intuitive and user-centered interfaces",
     bullets: [
       "Wireframing & layout systems",
-      "User flow design",
-      "Accessibility basics",
-      "Responsive design strategy",
+      "User flow and interaction design",
+      "Responsive design across devices",
+      "Accessibility fundamentals",
     ],
   },
   {
     id: 3,
     title: "System Architecture & Planning",
     icon: <FaProjectDiagram className="text-2xl text-amber-400" />,
-    description: "Structuring scalable, maintainable applications",
+    description: "Structuring scalable and maintainable applications",
     bullets: [
       "Feature scoping & roadmap planning",
-      "Database-aware UI thinking",
-      "Role-based system design",
+      "Role-based system design thinking",
+      "Database-aware UI architecture",
+      "Understanding of API-driven systems",
     ],
   },
   {
     id: 4,
-    title: "Domain Knowledge",
-    icon: <FaGlobeAsia className="text-2xl text-emerald-400" />,
-    description: "Understanding user context & market needs",
+    title: "Professional Skills",
+    icon: <FaHandshake className="text-2xl text-emerald-400" />,
+    description: "Communication, collaboration and continuous improvement",
     bullets: [
-      "Understanding of anime/manga & media platforms",
-      "Knowledge of user behavior in Myanmar market",
-      "Familiarity with content subscription & wallet flows",
-      "Awareness of common frontend challenges in similar apps",
-    ],
-  },
-  {
-    id: 5,
-    title: "Communication & Collaboration",
-    icon: <FaHandshake className="text-2xl text-green-400" />,
-    description: "Bridging technical and non-technical worlds",
-    bullets: [
-      "Client requirement clarification",
-      "Cross-functional collaboration",
-      "Technical explanation to non-tech stakeholders",
-      "Documentation writing",
-    ],
-  },
-  {
-    id: 6,
-    title: "Continuous Learning",
-    icon: <FaBookOpen className="text-2xl text-rose-400" />,
-    description: "Always evolving with the industry",
-    bullets: [
-      "Learning from documentation & official specs",
-      "Rapid adoption of new libraries",
-      "AI-assisted productivity workflows",
-      "Debugging unfamiliar systems",
+      "Clear communication with clients & teams",
+      "Technical documentation & explanation",
+      "Strong English proficiency for global collaboration",
+      "Continuous learning & rapid adaptation to new tools",
     ],
   },
 ];
@@ -128,19 +105,25 @@ const Skills = () => {
         {/* Header */}
         <div className="mb-12 text-left">
           <h2 className="font-heading text-3xl font-bold text-neutral-900 sm:text-4xl dark:text-white">
-            Technical &{" "}
+            Professional{" "}
             <span className="text-primary dark:text-primary-dark">
-              Professional
+              Skills
             </span>{" "}
-            Skills
           </h2>
           <p className="mt-4 max-w-3xl text-[13px] tracking-tight sm:text-sm sm:tracking-normal md:mt-6 lg:text-base xl:max-w-5xl dark:text-neutral-300">
-            A blend of technical expertise and professional capabilities
+            Over two years of practical experience building user-facing digital
+            products. My focus is frontend development and mobile UI, supported
+            by strong UI/UX design fundamentals and system planning. I combine
+            technical implementation with an understanding of business needs,
+            user engagement, and product storytelling. I actively integrate AI
+            tools into my workflow to accelerate development, research
+            solutions, and refine ideas while continuously learning and
+            improving my craft.
           </p>
         </div>
 
         {/* Skills Grid */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {skillCategories.map((skill, index) => (
             <div
               key={skill.id}

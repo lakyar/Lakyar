@@ -2,13 +2,16 @@ import React, { useState, useEffect, useRef } from "react";
 import heroD from "../assets/images/heroLyD.png";
 import heroL from "../assets/images/heroLyL.png";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
   const [counts, setCounts] = useState({
     projects: 0,
     years: 0,
     satisfaction: 0,
-    coffeeCups: 9999,
+    coffeeCups: 0,
   });
 
   const targetCounts = {
@@ -23,10 +26,96 @@ const Hero = () => {
   const totalFrames = Math.round(duration / (1000 / frameRate));
   const countStarted = useRef(false);
 
+  // Move ALL refs inside the component!
+  const lightImageRef = useRef(null);
+  const darkImageRef = useRef(null);
+  const imageContainerRef = useRef(null);
+  const textContainerRef = useRef(null);
+
+  // Image scroll animation
+  useEffect(() => {
+    // Create timeline for both images
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: imageContainerRef.current,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 1.5,
+        invalidateOnRefresh: true,
+      },
+    });
+
+    // Animate both images
+    tl.to(
+      [lightImageRef.current, darkImageRef.current],
+      {
+        y: 0,
+        ease: "none",
+        duration: 1,
+      },
+      0,
+    ).to(
+      [lightImageRef.current, darkImageRef.current],
+      {
+        y: -30,
+        ease: "none",
+        duration: 1,
+      },
+      1,
+    );
+
+    // Cleanup
+    return () => {
+      ScrollTrigger.getAll().forEach((st) => st.kill());
+    };
+  }, []);
+
+  // Button floating animation
+  useEffect(() => {
+    const buttons = document.querySelectorAll(".cta-button");
+
+    buttons.forEach((button, index) => {
+      gsap.to(button, {
+        y: -3,
+        duration: 1,
+        repeat: -1,
+        yoyo: true,
+      });
+    });
+
+    return () => {
+      gsap.killTweensOf(".cta-button");
+    };
+  }, []);
+
+  // Text animation
+  useEffect(() => {
+    if (!textContainerRef.current?.children) return;
+
+    const tl = gsap.timeline();
+
+    gsap.set(textContainerRef.current.children, {
+      scaleY: 0,
+      yPercent: -50,
+    });
+
+    tl.to(textContainerRef.current.children, {
+      scaleY: 1,
+      yPercent: 0,
+      duration: 0.4,
+      stagger: 0.2,
+      delay: 1.5,
+    });
+
+    return () => {
+      tl.kill();
+    };
+  }, []);
+
+  // Intersection Observer for stats
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        // If any stats section becomes visible and counting hasn't started
         if (
           !countStarted.current &&
           entries.some((entry) => entry.isIntersecting)
@@ -95,39 +184,6 @@ const Hero = () => {
     }
   };
 
-  const textContainerRef = useRef(null);
-  useEffect(() => {
-    // Create a timeline for better control
-    const tl = gsap.timeline();
-
-    // Set initial state
-    gsap.set(textContainerRef.current.children, {
-      opacity: 0,
-    });
-
-    // Animate with delay and stagger
-    tl.to(textContainerRef.current.children, {
-      opacity: 100,
-      duration: 0,
-      stagger: 0.4,
-      delay: 1.5,
-    });
-
-    // Cleanup
-    return () => {
-      tl.kill();
-    };
-  }, []);
-
-  {
-    /* <div className="font-SG mb-2 inline-flex scale-90 items-center gap-2 rounded-full bg-emerald-50 px-4 py-1 text-xs sm:scale-100 md:mb-6 md:text-sm dark:bg-emerald-900/30">
-    <span className="relative flex h-2 w-2">
-      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-      <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
-    </span>
-    Available for new projects
-  </div> */
-  }
   return (
     <section
       id="home"
@@ -135,8 +191,6 @@ const Hero = () => {
     >
       <div className="relative z-10 mx-auto flex w-full flex-wrap justify-between px-4 sm:px-6 lg:px-8 2xl:max-w-7xl @min-[800px]:flex-nowrap">
         <div className="w-[70%] lg:w-3/5 @max-[800px]:w-full @max-[800px]:text-center">
-          {/* Availability Badge */}
-
           {/* Main Headline */}
           <h1 className="font-heading mx-auto w-fit text-4xl font-bold tracking-tight text-neutral-900 md:text-5xl lg:text-6xl dark:text-white">
             Lakyar Linn
@@ -178,10 +232,10 @@ const Hero = () => {
               onClick={(e) => scrollToSection(e, "projects")}
               className="group orange-gradient hover:shadow-primary/25 relative flex min-w-fit cursor-pointer items-center justify-center overflow-hidden rounded-md rounded-bl-2xl px-4 py-2 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:shadow-xl active:scale-95 md:px-8 md:py-2 md:text-lg lg:py-3 xl:w-1/3 @max-[800px]:w-[35%]"
             >
-              <span className="relative z-10 flex items-center gap-2 text-sm duration-300 group-hover:tracking-widest">
+              <span className="cta-button relative z-10 flex items-center gap-2 text-sm duration-300 group-hover:tracking-widest">
                 View My Work
                 <svg
-                  className="group-hover:tranneutral-x-1 h-5 w-5 transition-transform duration-300"
+                  className="h-5 w-5"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -190,7 +244,7 @@ const Hero = () => {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"
                   />
                 </svg>
               </span>
@@ -201,10 +255,10 @@ const Hero = () => {
               onClick={(e) => scrollToSection(e, "contact")}
               className="group hover:border-primary hover:text-primary border-primary dark:hover:text-primary-dark dark:border-primary-dark flex min-w-fit cursor-pointer items-center justify-center rounded-md rounded-bl-2xl border-2 px-4 py-2 text-base font-semibold text-black transition-all duration-300 active:scale-95 md:px-8 md:py-2 md:text-lg lg:py-3 xl:w-1/3 @max-[800px]:w-[35%] dark:text-white dark:hover:border-orange-400"
             >
-              <span className="flex items-center gap-2 text-sm duration-300 group-hover:tracking-widest">
+              <span className="cta-button flex items-center gap-2 text-sm duration-300 group-hover:tracking-widest">
                 Get In Touch
                 <svg
-                  className="group-hover:tranneutral-x-1 group-hover:text-primary dark:group-hover:text-primary-dark h-5 w-5 text-black duration-300 dark:text-white"
+                  className="h-5 w-5"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -213,7 +267,7 @@ const Hero = () => {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+                    d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
                   />
                 </svg>
               </span>
@@ -260,7 +314,6 @@ const Hero = () => {
         </div>
 
         {/* lakyar potrait */}
-
         <div className="border-primary relative h-80 w-[30%] lg:w-2/5 @max-[800px]:w-full">
           {/* sign text */}
           <div
@@ -289,43 +342,51 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* orange ambient  */}
+          {/* orange ambient */}
           <div className="bg-primary-dark absolute top-0 left-0 size-32 rounded-full opacity-75 blur-3xl lg:size-40"></div>
-          <div className="from-primary/0 to-primary-dark absolute -bottom-10 -left-10 z-30 h-32 w-full rounded-full bg-linear-to-b opacity-50 blur-3xl md:bottom-0 dark:opacity-20"></div>
+          {/* <div className="from-primary/0 to-primary-dark absolute -bottom-10 -left-10 z-30 h-32 w-full rounded-full bg-linear-to-b opacity-50 blur-3xl md:bottom-0 dark:opacity-20"></div> */}
 
           {/* images */}
-          <div className="absolute top-0 left-0 z-20 flex h-90 w-full items-center justify-center lg:h-120 xl:h-140 dark:hidden">
+          <div ref={imageContainerRef} className="relative w-full">
             <div
-              className="h-full w-full"
-              style={{
-                maskImage:
-                  "linear-gradient(to bottom, black 0%, black 80%, transparent 100%)",
-                WebkitMaskImage:
-                  "linear-gradient(to bottom, black 0%, black 80%, transparent 100%)",
-              }}
+              ref={lightImageRef}
+              className="absolute top-0 left-0 z-20 flex h-90 w-full items-center justify-center lg:h-120 xl:h-140 dark:hidden"
             >
-              <img
-                src={heroL}
-                className="h-full w-full object-contain"
-                alt=""
-              />
+              <div
+                className="h-full w-full"
+                style={{
+                  maskImage:
+                    "linear-gradient(to bottom, black 0%, black 80%, transparent 100%)",
+                  WebkitMaskImage:
+                    "linear-gradient(to bottom, black 0%, black 80%, transparent 100%)",
+                }}
+              >
+                <img
+                  src={heroL}
+                  className="h-full w-full object-contain"
+                  alt=""
+                />
+              </div>
             </div>
-          </div>
-          <div className="absolute top-0 left-0 z-20 hidden h-90 w-full items-center justify-center lg:h-120 xl:h-140 dark:flex">
             <div
-              className="h-full w-full"
-              style={{
-                maskImage:
-                  "linear-gradient(to bottom, black 0%, black 80%, transparent 100%)",
-                WebkitMaskImage:
-                  "linear-gradient(to bottom, black 0%, black 80%, transparent 100%)",
-              }}
+              ref={darkImageRef}
+              className="absolute top-0 left-0 z-20 hidden h-90 w-full items-center justify-center lg:h-120 xl:h-140 dark:flex"
             >
-              <img
-                src={heroD}
-                className="h-full w-full object-contain"
-                alt=""
-              />
+              <div
+                className="h-full w-full"
+                style={{
+                  maskImage:
+                    "linear-gradient(to bottom, black 0%, black 80%, transparent 100%)",
+                  WebkitMaskImage:
+                    "linear-gradient(to bottom, black 0%, black 80%, transparent 100%)",
+                }}
+              >
+                <img
+                  src={heroD}
+                  className="h-full w-full object-contain"
+                  alt=""
+                />
+              </div>
             </div>
           </div>
 
