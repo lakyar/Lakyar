@@ -1,4 +1,4 @@
-<h1 align="center">Hi 👋, I'm Lak Yar</h1>
+<h1 align="center">Hi, I'm Lakyar</h1>
 <h3 align="center">Freelance Web Developer from Myanmar 🇲🇲</h3>
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=pie&label=Profile%20views&color=0e75b6&style=flat" alt="pie" /> </p>

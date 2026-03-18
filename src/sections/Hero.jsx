@@ -198,13 +198,7 @@ const Hero = () => {
 
           {/* Subheading */}
           <p className="mx-auto mt-4 mb-2 max-w-xl tracking-tighter text-nowrap sm:text-base sm:tracking-normal md:mt-6 md:text-lg xl:max-w-3xl xl:text-xl">
-            Freelance Developer · Co-Founder at{" "}
-            <a
-              href="https://digitlab.cc"
-              className="hover:text-primary dark:hover:text-primary-dark hover:border-primary dark:hover:border-primary-dark border-b border-black duration-300 dark:border-white"
-            >
-              DigitLab
-            </a>
+            Freelance Developer · Student
           </p>
           <p className="mx-auto max-w-xl text-sm tracking-tighter sm:tracking-normal md:text-base xl:max-w-3xl xl:text-lg">
             Focusing on building modern, high-performance apps with{" "}
