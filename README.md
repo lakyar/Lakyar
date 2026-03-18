@@ -1,5 +1,5 @@
 <h1 align="center">Hi 👋, I'm Lak Yar</h1>
-<h3 align="center">Passionate frontend developer from Myanmar 🇲🇲</h3>
+<h3 align="center">Freelance Web Developer from Myanmar 🇲🇲</h3>
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=pie&label=Profile%20views&color=0e75b6&style=flat" alt="pie" /> </p>
 
@@ -7,7 +7,7 @@
 
 - 🔭 I’m currently working on **[DigitLab](https://digitlab.cc)**
 
-- 🌐 Website **https://lakyar.com**
+- 🌐 Portfolio Website **[lakyar.com](https://lakyar.com)**
 
 - 💬 Ask me about **Frontend development and business design systems**
 
