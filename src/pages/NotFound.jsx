@@ -26,7 +26,10 @@ const NotFound = ({ title = "Page" }) => {
         </h2>
 
         {/* Description */}
-        <p className="mx-auto mb-8 max-w-md text-neutral-600 dark:text-neutral-400">
+        <p
+          clas
+          sName="mx-auto mb-8 max-w-md text-neutral-600 dark:text-neutral-400"
+        >
           The {title} you're looking for doesn't exist or has been moved. Let's
           get you back on track.
         </p>

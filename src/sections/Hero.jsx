@@ -200,24 +200,16 @@ const Hero = () => {
           <p className="mx-auto mt-4 mb-2 max-w-xl tracking-tighter text-nowrap sm:text-base sm:tracking-normal md:mt-6 md:text-lg xl:max-w-3xl xl:text-xl">
             Freelance Developer · Student
           </p>
-          <p className="mx-auto max-w-xl text-sm tracking-tighter sm:tracking-normal md:text-base xl:max-w-3xl xl:text-lg">
-            Focusing on building modern, high-performance apps with{" "}
-            <span className="font-semibold text-[#50a5b8] dark:text-[#77c1d2]">
-              Alpine
+          <p className="mx-auto max-w-xl text-xs tracking-tighter sm:text-sm sm:tracking-normal md:text-base xl:max-w-3xl xl:text-lg">
+            Open for projects — starting at{" "}
+            <span className="text-primary dark:text-primary-dark text-base md:text-lg xl:text-xl">
+              $399
             </span>
-            ,{" "}
-            <span className="font-semibold text-blue-600 dark:text-blue-400">
-              React
-            </span>
-            ,{" "}
-            <span className="font-semibold text-[#0092c7] dark:text-[#00bcff]">
-              Tailwind
-            </span>
-            , and{" "}
+            . I build modern, high-performance Websites and Applications with{" "}
             <span className="text-primary dark:text-primary-dark font-semibold">
-              cutting-edge tech
+              cutting-edge technologies
             </span>
-            . Let's turn your ideas into reality.
+            . Let's future-proof your business AI-powered solutions.
           </p>
 
           {/* CTA Buttons */}
@@ -271,7 +263,7 @@ const Hero = () => {
           {/* Stats - with counting animation */}
           <div
             id="stats-section"
-            className="stats-section mt-10 grid grid-cols-2 gap-4 @max-[800px]:hidden"
+            className="stats-section mt-10 grid grid-cols-2 gap-4 opacity-80 @max-[800px]:hidden"
           >
             {[
               {
@@ -387,7 +379,7 @@ const Hero = () => {
           {/* Stats - with counting animation mobile */}
           <div
             id="stats-section-mobile"
-            className="stats-section absolute bottom-0 z-30 mt-10 grid w-full grid-cols-2 justify-center gap-4 gap-x-20 md:mt-16 md:gap-6 xl:mt-20 @min-[800px]:hidden"
+            className="stats-section absolute bottom-0 z-30 mt-10 grid w-full grid-cols-2 justify-center gap-4 gap-x-20 opacity-80 md:mt-16 md:gap-6 xl:mt-20 @min-[800px]:hidden"
           >
             {[
               {
