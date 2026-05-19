@@ -141,9 +141,7 @@ const ProjectDetail = () => {
               <div className="space-y-3">
                 <div className="flex items-start justify-between gap-x-4 text-sm">
                   <span className="text-neutral-500">Status</span>
-                  <span className="text-green-600 dark:text-green-400">
-                    {project.status}
-                  </span>
+                  <span className="">{project.status}</span>
                 </div>
                 <div className="flex items-start justify-between gap-x-4 text-sm">
                   <span className="text-neutral-500">Year</span>
