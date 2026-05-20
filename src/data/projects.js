@@ -513,26 +513,4 @@ export const projectData = [
       },
     ],
   },
-  {
-    id: 14,
-    title: "2.0 Marketing Firm",
-    slug: "twopointo-marketing",
-    description: "TBA",
-    cover: "https://ibb.co/YF3SGhQd",
-    industry: "Marketing",
-    duration: "1 month",
-    projectSize: "Standard",
-    status: "Completed",
-    partner: "Oni-Chan Anime MM",
-    link: "https://twopointomarketing.com/",
-    techStack: "React, Tailwind CSS, GSAP, Inertia.js, Laravel, Filament ",
-    startDate: "2026-3-22",
-    endDate: "2026-4-13",
-    images: [
-      {
-        src: "https://ibb.co/60kd9Xwy",
-        name: "Landing Page",
-      },
-    ],
-  },
 ];
